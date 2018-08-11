@@ -9,7 +9,7 @@ public class ElementBehaviour : MonoBehaviour
 	void Start ()
 	{
 		Store S = new Store();
-		this._Data = S.Elements[0];
+		this._Data = Element.Current;
 		this.CreateFragmentObjects();
 		Debug.Log(this._Data.ResType);
 	}
@@ -22,9 +22,9 @@ public class ElementBehaviour : MonoBehaviour
 		for(int i = 0; i < this._Data.Fragments.Count; i++)
 		{
 			GameObject cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
-			cube.transform.localScale = new Vector3(1, 1, 1);
+			cube.transform.localScale = new Vector3(Element.Size, Element.Size, Element.Size);
 			cube.transform.position = new Vector3(this._Data.Fragments[i].Offset.x, 0.5f, -this._Data.Fragments[i].Offset.z);
-			cube.GetComponent<Renderer>().material.color = new Color(0,0.6f,0,1);
+			cube.GetComponent<Renderer>().material.color = this._Data.Paint;
 		}
 	}
 }
