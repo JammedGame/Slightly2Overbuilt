@@ -7,7 +7,7 @@ public class GridElementBehaviour : MonoBehaviour
 	private GridElement _Element;
 	void Start ()
 	{
-		this._Element = Grid.Single.Elements[0];
+		this._Element = Grid.Single.Elements[int.Parse(gameObject.tag)];
 	}
 	void Update ()
 	{
