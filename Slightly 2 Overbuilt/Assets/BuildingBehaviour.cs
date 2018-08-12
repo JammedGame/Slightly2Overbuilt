@@ -17,6 +17,7 @@ public class BuildingBehaviour : MonoBehaviour
 		this._Building = new Building();
 		this._Camera = Camera.main;
 		this.CreateGridVisual();
+		this.CreateEnvironment();
 	}
 	void Update ()
 	{
@@ -127,5 +128,17 @@ public class BuildingBehaviour : MonoBehaviour
 	{
 		Grid.Vertical = this._Building.CurrentFloor;
 		this._Camera.transform.position = new Vector3(-9.5f, 8 + this._Building.CurrentFloor * 1.8f, -9.5f);
+	}
+	private void CreateEnvironment()
+	{
+		GameObject Water = GameObject.CreatePrimitive(PrimitiveType.Cube);
+		Water.transform.localScale = new Vector3(100, 10, 20);
+		Water.transform.position = new Vector3(0, -6, 0);
+		Water.transform.rotation = Quaternion.Euler(0,45,0);
+		Water.GetComponent<Renderer>().material.color = new Color(0.2f,0.3f,0.8f,1);
+		GameObject Ground = GameObject.CreatePrimitive(PrimitiveType.Cube);
+		Ground.transform.localScale = new Vector3(5.2f * Element.Size, 3, 5.2f * Element.Size);
+		Ground.transform.position = new Vector3(0, -1.5f, 0);
+		Ground.GetComponent<Renderer>().material.color = new Color(0x88,0x88,0x88,0xFF);
 	}
 }
