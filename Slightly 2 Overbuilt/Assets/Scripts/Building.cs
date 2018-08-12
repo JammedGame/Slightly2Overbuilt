@@ -41,7 +41,12 @@ public class Building
 		if(this.OnMaxFloor()) this.AddFloor();
 		this._Floors[this._CurrentFloor].Elements.Add(NewElement);
 		this._Floors[this._CurrentFloor].Layout.Apply(Location, NewElement.Layout);
-		//if(NewElement.Extra != null) this._Floors[this._CurrentFloor+1].Layout.ApplySatelite(Location, NewElement.ExtraLayout);
+		if(NewElement.ExtraLayout != null)
+		{
+			Debug.Log("Ertpu");
+			this._Floors[this._CurrentFloor].Layout.ApplySatelite(Location, NewElement.ExtraLayout);
+			this._Floors[this._CurrentFloor].Layout.Print();
+		}
 	}
 	public void GoUp()
 	{

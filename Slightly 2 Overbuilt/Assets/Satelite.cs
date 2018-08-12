@@ -12,11 +12,11 @@ public class Satelite : Fragment
 	}
 	public Satelite() : base()
 	{
-		this._Vertical = 1;
+		this._Vertical = 0;
 	}
 	public Satelite(string ArtName, Vector3 Offset) : base(ArtName, Offset)
 	{
-		this._Vertical = 1;
+		this._Vertical = 0;
 	}
 	public Satelite(Satelite Old) : base(Old)
 	{

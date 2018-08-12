@@ -23,7 +23,7 @@ public class Store
 		this.AddNewElement(2, new Color32(0x88, 0x72, 0x5D, 0xFF)); // Fuel
 		this.AddNewElement(3, new Color32(0xBD, 0x3D, 0x3C, 0xFF)); // Textile
 		Element Wood = this.AddNewElement(3, new Color32(0xE4, 0xBE, 0x5D, 0xFF), "satelite02"); // Wood
-		Wood.Extra.Vertical = Element.Size * 3;
+		Wood.Extra.Vertical = Element.Size * 1.6f;
 		this.AddNewElement(3, new Color32(0xAE, 0xAC, 0x97, 0xFF)); // Metal
 		this.AddNewElement(3, new Color32(0x51, 0xE6, 0xAE, 0xFF)); // Glass
 		this.AddNewElement(4, new Color32(0x65, 0x64, 0x76, 0xFF), "satelite01"); // Rubber

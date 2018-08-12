@@ -53,10 +53,10 @@ public class ElementBehaviour : MonoBehaviour
 		if(this._Data.Extra != null)
 		{
 			GameObject FragmentObject = this._Data.Extra.Object;
-			if (this._Data.Location.x < 0) FragmentObject.transform.position = new Vector3(0, - 1.2f * Element.Size, 0);
+			if (this._Data.Location.x < 0) FragmentObject.transform.position = new Vector3(0, - 2.0f * Element.Size, 0);
 			else
 			{
-				float Vertical = 0.5f * Element.Size + this._Data.Floor * Element.Size + this._Data.Extra.Offset.y;
+				float Vertical = 0.5f * Element.Size + this._Data.Floor * Element.Size + this._Data.Extra.Offset.y + this._Data.Extra.Vertical;
 				Vector2 Location = new Vector2(this._Data.Location.x + this._Data.Layout.LocationDiff.x, this._Data.Location.y + this._Data.Layout.LocationDiff.y);
 				if(this._Data.Layout.Rotation == 0) FragmentObject.transform.position = new Vector3(((Location.x - 2) * Element.Size) + this._Data.Extra.Offset.x, Vertical, - ((Location.y - 2) * Element.Size) - this._Data.Extra.Offset.z);
 				else if(this._Data.Layout.Rotation == 1) FragmentObject.transform.position = new Vector3(((Location.x - 2) * Element.Size) + this._Data.Extra.Offset.z, Vertical, - ((Location.y - 2) * Element.Size) + this._Data.Extra.Offset.x);
@@ -96,17 +96,15 @@ public class ElementBehaviour : MonoBehaviour
 		}
 		if(this._Data.Extra != null)
 		{
-			Debug.Log("hoj"+this._Data.Extra.Vertical);
 			GameObject FragmentObject = GameObject.Instantiate((GameObject)Resources.Load(this._Data.Extra.ArtName));
 			float Factor = 50;
 			if(this._Data.Extra.ArtName == "satelite02") Factor = 0.4f;
 			FragmentObject.transform.localScale = new Vector3(Element.Size * Factor, Element.Size * Factor, Element.Size * Factor);
 			FragmentObject.transform.rotation = Quaternion.Euler(270,90 * this._Data.Extra.Orientation,0);
-			if (this._Data.Location.x < 0) FragmentObject.transform.position = new Vector3(0, - 1.2f * Element.Size, 0);
+			if (this._Data.Location.x < 0) FragmentObject.transform.position = new Vector3(0, - 2.0f * Element.Size, 0);
 			else
 			{
 				float Vertical = 0.5f * Element.Size + this._Data.Floor * Element.Size + this._Data.Extra.Offset.y + this._Data.Extra.Vertical;
-				Debug.Log("hojpa"+Vertical);
 				Vector2 Location = new Vector2(this._Data.Location.x + this._Data.Layout.LocationDiff.x, this._Data.Location.y + this._Data.Layout.LocationDiff.y);
 				if(this._Data.Layout.Rotation == 0) FragmentObject.transform.position = new Vector3(((Location.x - 2) * Element.Size) + this._Data.Extra.Offset.x, Vertical, - ((Location.y - 2) * Element.Size) - this._Data.Extra.Offset.z);
 				else if(this._Data.Layout.Rotation == 1) FragmentObject.transform.position = new Vector3(((Location.x - 2) * Element.Size) + this._Data.Extra.Offset.z, Vertical, - ((Location.y - 2) * Element.Size) + this._Data.Extra.Offset.x);

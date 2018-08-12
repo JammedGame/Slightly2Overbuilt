@@ -104,6 +104,7 @@ public class Element
 		this._ResType = Old._ResType;
 		this._Floor = Old._Floor;
 		this._Layout = Old._Layout.Copy();
+		if(Old._ExtraLayout != null) this._ExtraLayout = Old._ExtraLayout.Copy();
 		this._Paint = new Color(Old._Paint.r,Old._Paint.g,Old._Paint.b,Old._Paint.a);
 		this._Location = new Vector2(Old._Location.x, Old._Location.y);
 		this._Fragments = new List<Fragment>();

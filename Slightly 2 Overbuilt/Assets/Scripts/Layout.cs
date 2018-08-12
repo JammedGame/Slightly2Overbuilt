@@ -73,7 +73,6 @@ public class Layout
 	public bool CanApply(Vector2 Location, Layout L2)
 	{
 		Layout L1 = this.Invert();
-		//Debug.Log(L2.LocationDiff.x + " " + L2.LocationDiff.y);
 		return this.Check(Location, L1, L2);
 	}
 	public bool CanSupport(Vector2 Location, Layout L2)
@@ -92,7 +91,6 @@ public class Layout
 				}
 			}
 		}
-		this.Print();
     }
 	public void ApplySatelite(Vector2 Location, Layout L2)
     {
@@ -106,7 +104,6 @@ public class Layout
 				}
 			}
 		}
-		this.Print();
     }
 	private bool Check(Vector2 Location, Layout L1, Layout L2)
 	{
@@ -153,7 +150,6 @@ public class Layout
 		this._Rotation += Direction;
 		if(this._Rotation > 3) this._Rotation = 0;
 		if(this._Rotation < 0) this._Rotation = 3;
-		this.Print();
 	}
 	private Vector2 GetLocationDiff()
 	{
@@ -163,7 +159,7 @@ public class Layout
 		if(this._Rotation == 3) return new Vector2(this._Size.x - 1,	0);
 		return new Vector2();
 	}
-	private void Print()
+	public void Print()
 	{
 		Debug.Log("Layout Print");
 		for(int i = 0; i < this._Size.y; i++)
