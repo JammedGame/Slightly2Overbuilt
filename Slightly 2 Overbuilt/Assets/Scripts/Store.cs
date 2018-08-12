@@ -18,29 +18,97 @@ public class Store
 	{
 		this._Elements = new List<Element>();
 
-		List<Fragment> GreenFragments = new List<Fragment>();
-		GreenFragments.Add(new Fragment("", new Vector3(0, 				0, 				0)));
-		GreenFragments.Add(new Fragment("", new Vector3(Element.Size, 	0,				0)));
-		GreenFragments.Add(new Fragment("", new Vector3(0, 				0, 				Element.Size)));
-		Element Green = new Element(0, new Layout(2,2,new int[2,2] {{1,1},{1,0}}), GreenFragments);
+		Element Green = this.GenerateElementLayout(3);
 		Green.Paint = new Color(0,0.6f,0,1);
 		this._Elements.Add(Green);
 
-		List<Fragment> RedFragments = new List<Fragment>();
-		RedFragments.Add(new Fragment("", new Vector3(0, 				0, 				0)));
-		RedFragments.Add(new Fragment("", new Vector3(Element.Size, 		0, 				0)));
-		RedFragments.Add(new Fragment("", new Vector3(2 * Element.Size, 	0, 				0)));
-		Element Red = new Element(0, new Layout(3,1,new int[1,3] {{1,1,1}}), RedFragments);
+		Element Red = this.GenerateElementLayout(3);
 		Red.Paint = new Color(0.6f,0,0,1);
 		this._Elements.Add(Red);
 
-		List<Fragment> BlueFragments = new List<Fragment>();
-		BlueFragments.Add(new Fragment("", new Vector3(0, 				0, 				0)));
-		BlueFragments.Add(new Fragment("", new Vector3(0, 				0, 				Element.Size)));
-		BlueFragments.Add(new Fragment("", new Vector3(Element.Size, 		0, 				0)));
-		BlueFragments.Add(new Fragment("", new Vector3(2 * Element.Size, 	0, 				0)));
-		Element Blue = new Element(0, new Layout(3,2,new int[2,3] {{1,1,1}, {1,0,0}}), BlueFragments);
+		Element Blue = this.GenerateElementLayout(4);
 		Blue.Paint = new Color(0,0,0.6f,1);
 		this._Elements.Add(Blue);
+	}
+	private Element GenerateElementLayout(int Size)
+	{
+		List<Fragment> Fragments = new List<Fragment>();
+		if(Size == 2)
+		{
+			Fragments.Add(new Fragment("", new Vector3(0, 				0, 				0)));
+			Fragments.Add(new Fragment("", new Vector3(Element.Size, 		0, 				0)));
+			Element NewElement = new Element(0, new Layout(2,1,new int[1,2] {{1,1}}), Fragments);
+			return NewElement;
+		}
+		else if(Size == 3)
+		{
+			int Chosen = Random.Range(0,2);
+			if(Chosen == 0)
+			{
+				Fragments.Add(new Fragment("", new Vector3(0, 				0, 				0)));
+				Fragments.Add(new Fragment("", new Vector3(Element.Size, 	0,				0)));
+				Fragments.Add(new Fragment("", new Vector3(0, 				0, 				Element.Size)));
+				Element NewElement = new Element(0, new Layout(2,2,new int[2,2] {{1,1},{1,0}}), Fragments);
+				return NewElement;
+			}
+			else if(Chosen == 1)
+			{
+				Fragments.Add(new Fragment("", new Vector3(0, 				0, 				0)));
+				Fragments.Add(new Fragment("", new Vector3(Element.Size, 		0, 				0)));
+				Fragments.Add(new Fragment("", new Vector3(2 * Element.Size, 	0, 				0)));
+				Element NewElement = new Element(0, new Layout(3,1,new int[1,3] {{1,1,1}}), Fragments);
+				return NewElement;
+			}
+		}
+		else if(Size == 4)
+		{
+			int Chosen = Random.Range(0,5);
+			if(Chosen == 0)
+			{
+				Fragments.Add(new Fragment("", new Vector3(0, 				0, 				0)));
+				Fragments.Add(new Fragment("", new Vector3(Element.Size, 		0, 				0)));
+				Fragments.Add(new Fragment("", new Vector3(2 * Element.Size, 	0, 				0)));
+				Fragments.Add(new Fragment("", new Vector3(3 * Element.Size, 	0, 				0)));
+				Element NewElement = new Element(0, new Layout(4,1,new int[1,4] {{1,1,1,1}}), Fragments);
+				return NewElement;
+			}
+			else if(Chosen == 1)
+			{
+				Fragments.Add(new Fragment("", new Vector3(0, 				0, 				0)));
+				Fragments.Add(new Fragment("", new Vector3(Element.Size, 	0,				0)));
+				Fragments.Add(new Fragment("", new Vector3(0, 				0, 				Element.Size)));
+				Fragments.Add(new Fragment("", new Vector3(Element.Size, 	0, 				Element.Size)));
+				Element NewElement = new Element(0, new Layout(2,2,new int[2,2] {{1,1},{1,1}}), Fragments);
+				return NewElement;
+			}
+			else if(Chosen == 2)
+			{
+				Fragments.Add(new Fragment("", new Vector3(0, 				0, 				0)));
+				Fragments.Add(new Fragment("", new Vector3(0, 				0, 				Element.Size)));
+				Fragments.Add(new Fragment("", new Vector3(Element.Size, 		0, 				0)));
+				Fragments.Add(new Fragment("", new Vector3(2 * Element.Size, 	0, 				0)));
+				Element NewElement = new Element(0, new Layout(3,2,new int[2,3] {{1,1,1}, {1,0,0}}), Fragments);
+				return NewElement;
+			}
+			else if(Chosen == 3)
+			{
+				Fragments.Add(new Fragment("", new Vector3(0, 					0, 				0)));
+				Fragments.Add(new Fragment("", new Vector3(Element.Size, 		0, 				0)));
+				Fragments.Add(new Fragment("", new Vector3(Element.Size, 		0, 				Element.Size)));
+				Fragments.Add(new Fragment("", new Vector3(2 * Element.Size, 	0, 				Element.Size)));
+				Element NewElement = new Element(0, new Layout(3,2,new int[2,3] {{1,1,0}, {0,1,1}}), Fragments);
+				return NewElement;
+			}
+			else if(Chosen == 4)
+			{
+				Fragments.Add(new Fragment("", new Vector3(0, 				0, 				0)));
+				Fragments.Add(new Fragment("", new Vector3(Element.Size, 		0, 				0)));
+				Fragments.Add(new Fragment("", new Vector3(Element.Size, 		0, 				Element.Size)));
+				Fragments.Add(new Fragment("", new Vector3(2 * Element.Size, 	0, 				0)));
+				Element NewElement = new Element(0, new Layout(3,2,new int[2,3] {{1,1,1}, {0,1,0}}), Fragments);
+				return NewElement;
+			}
+		}
+		return null;
 	}
 }
