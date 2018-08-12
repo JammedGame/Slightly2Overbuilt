@@ -4,18 +4,18 @@ using UnityEngine;
 
 public class Building
 {
+	private int _CurrentFloor;
 	private Store _Pool;
-	private Floor _Current;
 	private List<Floor> _Floors;
+	public int CurrentFloor
+	{
+		get { return this._CurrentFloor; }
+		set { this._CurrentFloor = value; }
+	}
 	public Store Pool
 	{
 		get { return this._Pool; }
 		set { this._Pool = value; }
-	}
-	public Floor Current
-	{
-		get { return this._Current; }
-		set { this._Current = value; }
 	}
 	public List<Floor> Floors
 	{
@@ -26,7 +26,17 @@ public class Building
 	{
 		this._Pool = new Store();
 		this._Floors = new List<Floor>();
-		this._Current = new Floor(0);
-		this._Floors.Add(this._Current);
+		Floor NewFloor = new Floor(0);
+		this._Floors.Add(NewFloor);
+		this._CurrentFloor = 0;
+	}
+	public bool CanBuild(Vector2 Location, Layout L2)
+	{
+		return this._Floors[this._CurrentFloor].Layout.CanApply(Location, L2);
+	}
+	public void Build(Vector2 Location, Element NewElement)
+	{
+		this._Floors[this._CurrentFloor].Elements.Add(NewElement);
+		this._Floors[this._CurrentFloor].Layout.Apply(Location, NewElement.Layout);
 	}
 }

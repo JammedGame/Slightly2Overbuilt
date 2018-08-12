@@ -6,18 +6,13 @@ public class Element
 {
 	public static float Size = 1.8f;
 	public static Element Current;
-	private int _ResType;
 	private bool _ToDestroy;
 	private bool _Construct;
+	private int _ResType;
 	private Layout _Layout;
 	private Vector2 _Location;
 	private Color _Paint;
 	private List<Fragment> _Fragments;
-	public int ResType
-	{
-		get { return this._ResType; }
-		set { this._ResType = value; }
-	}
 	public bool ToDestroy
 	{
 		get { return this._ToDestroy; }
@@ -26,6 +21,11 @@ public class Element
 	{
 		get { return this._Construct; }
 		set { this._Construct = value; }
+	}
+	public int ResType
+	{
+		get { return this._ResType; }
+		set { this._ResType = value; }
 	}
 	public Layout Layout
 	{
@@ -49,9 +49,9 @@ public class Element
 	}
 	public Element()
 	{
-		this._ResType = 0;
 		this._ToDestroy = false;
 		this._Construct = false;
+		this._ResType = 0;
 		this._Layout = new Layout(2,2);
 		this._Paint = new Color(1,1,1,1);
 		this._Location = new Vector2();
@@ -60,9 +60,9 @@ public class Element
 	}
 	public Element(int ResType, Layout Layout, List<Fragment> Fragments)
 	{
-		this._ResType = ResType;
 		this._ToDestroy = false;
 		this._Construct = false;
+		this._ResType = ResType;
 		this._Layout = Layout;
 		this._Paint = new Color(1,1,1,1);
 		this._Location = new Vector2();
@@ -70,9 +70,9 @@ public class Element
 	}
 	public Element(Element Old)
 	{
-		this._ResType = Old._ResType;
 		this._ToDestroy = false;
 		this._Construct = false;
+		this._ResType = Old._ResType;
 		this._Layout = Old._Layout.Copy();
 		this._Paint = new Color(Old._Paint.r,Old._Paint.g,Old._Paint.b,Old._Paint.a);
 		this._Location = new Vector2(Old._Location.x, Old._Location.y);
@@ -90,5 +90,9 @@ public class Element
 	public void Promote()
 	{
 		Element.Current = this;
+	}
+	public void Rotate(int Direction)
+	{
+		this._Layout.Rotate(Direction);
 	}
 }

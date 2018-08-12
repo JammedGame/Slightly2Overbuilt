@@ -5,7 +5,6 @@ using UnityEngine;
 public class BuildingBehaviour : MonoBehaviour
 {
 	private int _SelectedIndex;
-	private int _CurrentFloor;
 	private Grid _Grid;
 	private Element _Construct;
 	private GameObject _ConstructObject;
@@ -48,11 +47,15 @@ public class BuildingBehaviour : MonoBehaviour
 	}
 	private void CheckBuildingSelected()
 	{
-		if (Input.GetKeyDown(KeyCode.Alpha1) && this._SelectedIndex != 0)
+		if (Input.GetKeyDown(KeyCode.A) && this._SelectedIndex != -1)
 		{
-			this.ChangeSelectedBuilding(0);
+			this._Construct.Rotate(-1);
 		}
-		else if (Input.GetKeyDown(KeyCode.Alpha2) && this._SelectedIndex != 1)
+		else if (Input.GetKeyDown(KeyCode.D) && this._SelectedIndex != -1)
+		{
+			this._Construct.Rotate(1);
+		}
+		if (Input.GetKeyDown(KeyCode.Alpha2) && this._SelectedIndex != 1)
 		{
 			this.ChangeSelectedBuilding(1);
 		}
@@ -62,8 +65,20 @@ public class BuildingBehaviour : MonoBehaviour
 		}
 		if (Input.GetKeyDown(KeyCode.Mouse0) && Grid.CursorLocation.x != -1)
 		{
-			if(this._SelectedIndex != -1) this.CreateElement(Grid.CursorLocation, this._Construct.Copy());
-			this.ChangeSelectedBuilding(-1);
+			if(this._SelectedIndex != -1)
+			{
+				if(this._Building.CanBuild(Grid.CursorLocation, this._Construct.Layout))
+				{
+					Element NewElement = this._Construct.Copy();
+					this._Building.Build(Grid.CursorLocation, NewElement);
+					this.CreateElement(Grid.CursorLocation, NewElement);
+					this.ChangeSelectedBuilding(-1);
+				}
+			}
+		}
+		if (Input.GetKeyDown(KeyCode.Alpha1) && this._SelectedIndex != 0)
+		{
+			this.ChangeSelectedBuilding(0);
 		}
 	}
 	private void ChangeSelectedBuilding(int Index)
