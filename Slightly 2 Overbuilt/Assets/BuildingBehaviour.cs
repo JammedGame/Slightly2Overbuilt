@@ -139,6 +139,6 @@ public class BuildingBehaviour : MonoBehaviour
 		GameObject Ground = GameObject.CreatePrimitive(PrimitiveType.Cube);
 		Ground.transform.localScale = new Vector3(5.2f * Element.Size, 3, 5.2f * Element.Size);
 		Ground.transform.position = new Vector3(0, -1.5f, 0);
-		Ground.GetComponent<Renderer>().material.color = new Color(0x88,0x88,0x88,0xFF);
+		Ground.GetComponent<Renderer>().material.color = new Color(0.4f, 0.4f,0.4f, 1.0f);
 	}
 }
