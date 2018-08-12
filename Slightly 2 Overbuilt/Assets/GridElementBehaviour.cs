@@ -31,8 +31,10 @@ public class GridElementBehaviour : MonoBehaviour
     }
     void OnMouseExit()
     {
+		int i = int.Parse(gameObject.tag);
 		if(this._Element == null) return;
-		gameObject.GetComponent<Renderer>().material.color = new Color(0.5f, 0.5f, 0.5f, 1);
+		if(i % 2 == 0) gameObject.GetComponent<Renderer>().material.color = new Color(0.5f, 0.5f, 0.5f, 1);
+		else gameObject.GetComponent<Renderer>().material.color = new Color(0.7f, 0.7f, 0.7f, 1);
         if(Grid.CursorLocation == this._Element.Location) Grid.CursorLocation = new Vector2(-1,-1);
     }
 }

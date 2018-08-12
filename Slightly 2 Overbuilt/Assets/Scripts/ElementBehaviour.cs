@@ -33,7 +33,7 @@ public class ElementBehaviour : MonoBehaviour
 			if (this._Data.Location.x < 0) FragmentObject.transform.position = new Vector3(0, - 1.2f * Element.Size, 0);
 			else
 			{
-				float Vertical = 0.5f + this._Data.Floor * Element.Size;
+				float Vertical = 0.5f * Element.Size + this._Data.Floor * Element.Size;
 				Vector2 Location = new Vector2(this._Data.Location.x + this._Data.Layout.LocationDiff.x, this._Data.Location.y + this._Data.Layout.LocationDiff.y);
 				if(this._Data.Layout.Rotation == 0) FragmentObject.transform.position = new Vector3(((Location.x - 2) * Element.Size) + this._Data.Fragments[i].Offset.x, Vertical, - ((Location.y - 2) * Element.Size) - this._Data.Fragments[i].Offset.z);
 				else if(this._Data.Layout.Rotation == 1) FragmentObject.transform.position = new Vector3(((Location.x - 2) * Element.Size) + this._Data.Fragments[i].Offset.z, Vertical, - ((Location.y - 2) * Element.Size) + this._Data.Fragments[i].Offset.x);
@@ -58,7 +58,7 @@ public class ElementBehaviour : MonoBehaviour
 			if (this._Data.Location.x < 0) FragmentObject.transform.position = new Vector3(0, - 1.2f * Element.Size, 0);
 			else
 			{
-				float Vertical = 0.5f + this._Data.Floor * Element.Size;
+				float Vertical = 0.5f * Element.Size + this._Data.Floor * Element.Size;
 				Vector2 Location = new Vector2(this._Data.Location.x + this._Data.Layout.LocationDiff.x, this._Data.Location.y + this._Data.Layout.LocationDiff.y);
 				if(this._Data.Layout.Rotation == 0) FragmentObject.transform.position = new Vector3(((Location.x - 2) * Element.Size) + this._Data.Fragments[i].Offset.x, Vertical, - ((Location.y - 2) * Element.Size) - this._Data.Fragments[i].Offset.z);
 				else if(this._Data.Layout.Rotation == 1) FragmentObject.transform.position = new Vector3(((Location.x - 2) * Element.Size) + this._Data.Fragments[i].Offset.z, Vertical, - ((Location.y - 2) * Element.Size) + this._Data.Fragments[i].Offset.x);
