@@ -18,17 +18,22 @@ public class Store
 	{
 		this._Elements = new List<Element>();
 
-		Element Green = this.GenerateElementLayout(3);
-		Green.Paint = new Color(0,0.6f,0,1);
-		this._Elements.Add(Green);
-
-		Element Red = this.GenerateElementLayout(3);
-		Red.Paint = new Color(0.6f,0,0,1);
-		this._Elements.Add(Red);
-
-		Element Blue = this.GenerateElementLayout(4);
-		Blue.Paint = new Color(0,0,0.6f,1);
-		this._Elements.Add(Blue);
+		this.AddNewElement(2, new Color32(0x78, 0xB3, 0xB9, 0xFF)); // Water
+		this.AddNewElement(2, new Color32(0xF9, 0x95, 0x03, 0xFF)); // Food
+		this.AddNewElement(2, new Color32(0x88, 0x72, 0x5D, 0xFF)); // Fuel
+		this.AddNewElement(3, new Color32(0xBD, 0x3D, 0x3C, 0xFF)); // Textile
+		this.AddNewElement(3, new Color32(0xE4, 0xBE, 0x5D, 0xFF)); // Wood
+		this.AddNewElement(3, new Color32(0xAE, 0xAC, 0x97, 0xFF)); // Metal
+		this.AddNewElement(3, new Color32(0x51, 0xE6, 0xAE, 0xFF)); // Glass
+		this.AddNewElement(4, new Color32(0x65, 0x64, 0x76, 0xFF)); // Rubber
+		this.AddNewElement(4, new Color32(0xFF, 0xF7, 0xFA, 0xFF)); // Plastic
+		this.AddNewElement(4, new Color32(0xFF, 0xFF, 0x85, 0xFF)); // Electicity
+	}
+	private void AddNewElement(int Size, Color Paint)
+	{
+		Element NewElement = this.GenerateElementLayout(Size);
+		NewElement.Paint = Paint;
+		this._Elements.Add(NewElement);
 	}
 	private Element GenerateElementLayout(int Size)
 	{

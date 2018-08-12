@@ -85,6 +85,30 @@ public class BuildingBehaviour : MonoBehaviour
 		{
 			this.ChangeSelectedBuilding(2);
 		}
+		else if (Input.GetKeyDown(KeyCode.Alpha4) && this._SelectedIndex != 3)
+		{
+			this.ChangeSelectedBuilding(3);
+		}
+		else if (Input.GetKeyDown(KeyCode.Alpha5) && this._SelectedIndex != 4)
+		{
+			this.ChangeSelectedBuilding(4);
+		}
+		else if (Input.GetKeyDown(KeyCode.Alpha6) && this._SelectedIndex != 5)
+		{
+			this.ChangeSelectedBuilding(5);
+		}
+		else if (Input.GetKeyDown(KeyCode.Alpha7) && this._SelectedIndex != 6)
+		{
+			this.ChangeSelectedBuilding(6);
+		}
+		else if (Input.GetKeyDown(KeyCode.Alpha8) && this._SelectedIndex != 7)
+		{
+			this.ChangeSelectedBuilding(7);
+		}
+		else if (Input.GetKeyDown(KeyCode.Alpha9) && this._SelectedIndex != 8)
+		{
+			this.ChangeSelectedBuilding(8);
+		}
 		else if (Input.GetKeyDown(KeyCode.Alpha0) && this._SelectedIndex != -1)
 		{
 			this.ChangeSelectedBuilding(-1);
@@ -139,6 +163,6 @@ public class BuildingBehaviour : MonoBehaviour
 		GameObject Ground = GameObject.CreatePrimitive(PrimitiveType.Cube);
 		Ground.transform.localScale = new Vector3(5.2f * Element.Size, 3, 5.2f * Element.Size);
 		Ground.transform.position = new Vector3(0, -1.5f, 0);
-		Ground.GetComponent<Renderer>().material.color = new Color(0.4f, 0.4f,0.4f, 1.0f);
+		Ground.GetComponent<Renderer>().material.color = new Color(0.6f, 0.6f,0.6f, 1.0f);
 	}
 }
