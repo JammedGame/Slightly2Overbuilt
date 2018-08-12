@@ -32,6 +32,11 @@ public class ElementBehaviour : MonoBehaviour
 			GameObject FragmentObject = this._Data.Fragments[i].Object;
 			if (this._Data.Location.x < 0) FragmentObject.transform.position = new Vector3(0, - 1.2f * Element.Size, 0);
 			else FragmentObject.transform.position = new Vector3(((this._Data.Location.x - 2) * Element.Size) + this._Data.Fragments[i].Offset.x, 0.5f, - ((this._Data.Location.y - 2) * Element.Size) - this._Data.Fragments[i].Offset.z);
+			if(this._Data.Construct)
+			{
+				if(this._Data.ConstructAvailable) FragmentObject.GetComponent<Renderer>().material.color = new Color(1,1,1,1);
+				else FragmentObject.GetComponent<Renderer>().material.color = new Color(1,0,0,1);
+			}
 		}
 	}
 	private void CreateFragmentObjects() 

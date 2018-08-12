@@ -8,6 +8,7 @@ public class Element
 	public static Element Current;
 	private bool _ToDestroy;
 	private bool _Construct;
+	private bool _ConstructAvailable;
 	private int _ResType;
 	private Layout _Layout;
 	private Vector2 _Location;
@@ -21,6 +22,11 @@ public class Element
 	{
 		get { return this._Construct; }
 		set { this._Construct = value; }
+	}
+	public bool ConstructAvailable
+	{
+		get { return this._ConstructAvailable; }
+		set { this._ConstructAvailable = value; }
 	}
 	public int ResType
 	{
@@ -51,6 +57,7 @@ public class Element
 	{
 		this._ToDestroy = false;
 		this._Construct = false;
+		this._ConstructAvailable = false;
 		this._ResType = 0;
 		this._Layout = new Layout(2,2);
 		this._Paint = new Color(1,1,1,1);
@@ -62,6 +69,7 @@ public class Element
 	{
 		this._ToDestroy = false;
 		this._Construct = false;
+		this._ConstructAvailable = false;
 		this._ResType = ResType;
 		this._Layout = Layout;
 		this._Paint = new Color(1,1,1,1);
@@ -72,6 +80,7 @@ public class Element
 	{
 		this._ToDestroy = false;
 		this._Construct = false;
+		this._ConstructAvailable = false;
 		this._ResType = Old._ResType;
 		this._Layout = Old._Layout.Copy();
 		this._Paint = new Color(Old._Paint.r,Old._Paint.g,Old._Paint.b,Old._Paint.a);

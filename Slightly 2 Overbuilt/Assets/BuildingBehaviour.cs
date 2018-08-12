@@ -38,9 +38,9 @@ public class BuildingBehaviour : MonoBehaviour
 	{
 		if(this._SelectedIndex != -1)
 		{
-			
 			if(this._Construct.Location.x != Grid.CursorLocation.x || this._Construct.Location.y != Grid.CursorLocation.y)
 			{
+				this._Construct.ConstructAvailable = this._Building.CanBuild(Grid.CursorLocation, this._Construct.Layout);
 				this._Construct.Location = Grid.CursorLocation;
 			}
 		}
