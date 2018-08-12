@@ -6,6 +6,7 @@ public class Fragment
 {
 	private string _ArtName;
 	private Vector3 _Offset;
+	private GameObject _Object;
 	public string ArtName
 	{
 		get { return this._ArtName; }
@@ -16,6 +17,11 @@ public class Fragment
 		get { return this._Offset; }
 		set { this._Offset = value; }
 	}
+	public GameObject Object
+	{
+		get { return this._Object; }
+		set { this._Object = value; }
+	}
 	public Fragment()
 	{
 		this._ArtName = "";
@@ -25,5 +31,14 @@ public class Fragment
 	{
 		this._ArtName = ArtName;
 		this._Offset = Offset;
+	}
+	public Fragment(Fragment Old)
+	{
+		this._ArtName = Old._ArtName;
+		this._Offset = new Vector3(Old._Offset.x, Old._Offset.y, Old._Offset.z);
+	}
+	public Fragment Copy()
+	{
+		return new Fragment(this);
 	}
 }

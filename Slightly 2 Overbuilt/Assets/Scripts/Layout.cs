@@ -38,4 +38,12 @@ public class Layout
 			}
 		}
 	}
+	public Layout(Layout Old) : this((int)Old._Size.x, (int)Old._Size.y, Old._Fields)
+	{
+
+	}
+	public Layout Copy()
+	{
+		return new Layout(this);
+	}
 }

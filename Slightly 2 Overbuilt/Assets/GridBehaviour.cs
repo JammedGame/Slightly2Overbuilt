@@ -20,7 +20,7 @@ public class GridBehaviour : MonoBehaviour
 		{
 			GameObject NewObject = GameObject.CreatePrimitive(PrimitiveType.Cube);
 			NewObject.tag = i + "";
-			NewObject.transform.localScale = new Vector3(Element.Size * 0.8f, 0.05f, Element.Size * 0.8f);
+			NewObject.transform.localScale = new Vector3(Element.Size, 0.05f, Element.Size);
 			NewObject.transform.position = new Vector3((this._Grid.Elements[i].Location.x - 2) * Element.Size, - 0.03f, -(this._Grid.Elements[i].Location.y - 2) * Element.Size);
 			NewObject.GetComponent<Renderer>().material.color = new Color(0.5f, 0.5f, 0.5f, 1);
 			NewObject.AddComponent<GridElementBehaviour>();
