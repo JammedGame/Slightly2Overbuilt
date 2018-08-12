@@ -51,7 +51,7 @@ public class ElementBehaviour : MonoBehaviour
 	{
 		for(int i = 0; i < this._Data.Fragments.Count; i++)
 		{
-			GameObject FragmentObject = GameObject.Instantiate((GameObject)Resources.Load("fragment"));
+			GameObject FragmentObject = GameObject.Instantiate((GameObject)Resources.Load(this._Data.Fragments[i].ArtName));
 			int Factor = 50;
 			FragmentObject.transform.localScale = new Vector3(Element.Size * Factor, Element.Size * Factor, Element.Size * Factor);
 			if (this._Data.Location.x < 0) FragmentObject.transform.position = new Vector3(0, - 1.2f * Element.Size, 0);
