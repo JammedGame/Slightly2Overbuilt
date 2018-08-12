@@ -50,10 +50,12 @@ public class BuildingBehaviour : MonoBehaviour
 		if (Input.GetKeyDown(KeyCode.A) && this._SelectedIndex != -1)
 		{
 			this._Construct.Rotate(-1);
+			this._Construct.ConstructAvailable = this._Building.CanBuild(Grid.CursorLocation, this._Construct.Layout);
 		}
 		else if (Input.GetKeyDown(KeyCode.D) && this._SelectedIndex != -1)
 		{
 			this._Construct.Rotate(1);
+			this._Construct.ConstructAvailable = this._Building.CanBuild(Grid.CursorLocation, this._Construct.Layout);
 		}
 		if (Input.GetKeyDown(KeyCode.Alpha1) && this._SelectedIndex != 0)
 		{
