@@ -11,7 +11,6 @@ public class ElementBehaviour : MonoBehaviour
 		Store S = new Store();
 		this._Data = Element.Current;
 		this.CreateFragmentObjects();
-		Debug.Log(this._Data.ResType);
 	}
 	void Update ()
 	{
@@ -31,7 +30,14 @@ public class ElementBehaviour : MonoBehaviour
 		{
 			GameObject FragmentObject = this._Data.Fragments[i].Object;
 			if (this._Data.Location.x < 0) FragmentObject.transform.position = new Vector3(0, - 1.2f * Element.Size, 0);
-			else FragmentObject.transform.position = new Vector3(((this._Data.Location.x - 2) * Element.Size) + this._Data.Fragments[i].Offset.x, 0.5f, - ((this._Data.Location.y - 2) * Element.Size) - this._Data.Fragments[i].Offset.z);
+			else
+			{
+				Vector2 Location = new Vector2(this._Data.Location.x + this._Data.Layout.LocationDiff.x, this._Data.Location.y + this._Data.Layout.LocationDiff.y);
+				if(this._Data.Layout.Rotation == 0) FragmentObject.transform.position = new Vector3(((Location.x - 2) * Element.Size) + this._Data.Fragments[i].Offset.x, 0.5f, - ((Location.y - 2) * Element.Size) - this._Data.Fragments[i].Offset.z);
+				else if(this._Data.Layout.Rotation == 1) FragmentObject.transform.position = new Vector3(((Location.x - 2) * Element.Size) + this._Data.Fragments[i].Offset.z, 0.5f, - ((Location.y - 2) * Element.Size) + this._Data.Fragments[i].Offset.x);
+				else if(this._Data.Layout.Rotation == 2) FragmentObject.transform.position = new Vector3(((Location.x - 2) * Element.Size) - this._Data.Fragments[i].Offset.x, 0.5f, - ((Location.y - 2) * Element.Size) + this._Data.Fragments[i].Offset.z);
+				else if(this._Data.Layout.Rotation == 3) FragmentObject.transform.position = new Vector3(((Location.x - 2) * Element.Size) - this._Data.Fragments[i].Offset.z, 0.5f, - ((Location.y - 2) * Element.Size) - this._Data.Fragments[i].Offset.x);
+			}
 			if(this._Data.Construct)
 			{
 				if(this._Data.ConstructAvailable) FragmentObject.GetComponent<Renderer>().material.color = new Color(1,1,1,1);
@@ -46,7 +52,14 @@ public class ElementBehaviour : MonoBehaviour
 			GameObject FragmentObject = GameObject.CreatePrimitive(PrimitiveType.Cube);
 			FragmentObject.transform.localScale = new Vector3(Element.Size, Element.Size, Element.Size);
 			if (this._Data.Location.x < 0) FragmentObject.transform.position = new Vector3(0, - 1.2f * Element.Size, 0);
-			else FragmentObject.transform.position = new Vector3(((this._Data.Location.x - 2) * Element.Size) + this._Data.Fragments[i].Offset.x, 0.5f, - ((this._Data.Location.y - 2) * Element.Size) - this._Data.Fragments[i].Offset.z);
+			else
+			{
+				Vector2 Location = new Vector2(this._Data.Location.x + this._Data.Layout.LocationDiff.x, this._Data.Location.y + this._Data.Layout.LocationDiff.y);
+				if(this._Data.Layout.Rotation == 0) FragmentObject.transform.position = new Vector3(((Location.x - 2) * Element.Size) + this._Data.Fragments[i].Offset.x, 0.5f, - ((Location.y - 2) * Element.Size) - this._Data.Fragments[i].Offset.z);
+				else if(this._Data.Layout.Rotation == 1) FragmentObject.transform.position = new Vector3(((Location.x - 2) * Element.Size) + this._Data.Fragments[i].Offset.z, 0.5f, - ((Location.y - 2) * Element.Size) + this._Data.Fragments[i].Offset.x);
+				else if(this._Data.Layout.Rotation == 2) FragmentObject.transform.position = new Vector3(((Location.x - 2) * Element.Size) - this._Data.Fragments[i].Offset.x, 0.5f, - ((Location.y - 2) * Element.Size) + this._Data.Fragments[i].Offset.z);
+				else if(this._Data.Layout.Rotation == 3) FragmentObject.transform.position = new Vector3(((Location.x - 2) * Element.Size) - this._Data.Fragments[i].Offset.z, 0.5f, - ((Location.y - 2) * Element.Size) - this._Data.Fragments[i].Offset.x);
+			}
 			if(!this._Data.Construct) FragmentObject.GetComponent<Renderer>().material.color = this._Data.Paint;
 			else FragmentObject.GetComponent<Renderer>().material.color = new Color(1,1,1,1);
 			Destroy(FragmentObject.GetComponent<Collider>());

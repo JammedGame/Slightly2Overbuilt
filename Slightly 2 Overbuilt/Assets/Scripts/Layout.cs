@@ -12,6 +12,11 @@ public class Layout
 		get { return this._Size; }
 		set { this._Size = value; }
 	}
+	public int Rotation
+	{
+		get { return this._Rotation; }
+		set { this._Rotation = value; }
+	}
 	public int[,] Fields
 	{
 		get { return this._Fields; }
@@ -23,6 +28,7 @@ public class Layout
 	}
 	public Layout(int x, int y)
 	{
+		this._Rotation = 0;
 		this._Size = new Vector2(x,y);
 		this._Fields = new int[y,x];
 		for(int i = 0; i < y; i++)
@@ -35,6 +41,7 @@ public class Layout
 	}
 	public Layout(int x, int y, int[,] Values) : this(x,y)
 	{
+		this._Rotation = 0;
 		for(int i = 0; i < y; i++)
 		{
 			for(int j = 0; j < x; j++)
@@ -45,7 +52,7 @@ public class Layout
 	}
 	public Layout(Layout Old) : this((int)Old._Size.x, (int)Old._Size.y, Old._Fields)
 	{
-
+		this._Rotation = Old._Rotation;
 	}
 	public Layout Copy()
 	{
@@ -66,17 +73,15 @@ public class Layout
 	public bool CanApply(Vector2 Location, Layout L2)
 	{
 		Layout L1 = this.Invert();
-		Location = new Vector2(Location.x + L2.LocationDiff.x, Location.y + L2.LocationDiff.y);
+		//Debug.Log(L2.LocationDiff.x + " " + L2.LocationDiff.y);
 		return this.Check(Location, L1, L2);
 	}
 	public bool CanSupport(Vector2 Location, Layout L2)
 	{
-		Location = new Vector2(Location.x + L2.LocationDiff.x, Location.y + L2.LocationDiff.y);
 		return this.Check(Location, this, L2);
 	}
 	public void Apply(Vector2 Location, Layout L2)
     {
-        Location = new Vector2(Location.x + L2.LocationDiff.x, Location.y + L2.LocationDiff.y);
 		for(int i = 0; i < L2._Size.y; i++)
 		{
 			for(int j = 0; j < L2._Size.x; j++)
@@ -87,6 +92,7 @@ public class Layout
 				}
 			}
 		}
+		this.Print();
     }
 	private bool Check(Vector2 Location, Layout L1, Layout L2)
 	{
@@ -108,23 +114,23 @@ public class Layout
 	public void Rotate(int Direction)
 	{
 		int[,] NewFields = new int[(int)this._Size.x, (int)this._Size.y];
-		if(Direction == -1)
+		if(Direction == 1)
 		{
-			for(int i = 0; i < this._Size.y; i++)
+			for(int i = 0; i < this._Size.x; i++)
 			{
-				for(int j = 0; j < this._Size.x; j++)
+				for(int j = 0; j < this._Size.y; j++)
 				{
-					NewFields[j, ((int)this._Size.x) - i - 1] = this._Fields[i,j];
+					NewFields[i,j] = this._Fields[j, (int)this._Size.x - i - 1];
 				}
 			}
 		}
-		else if(Direction == 1)
+		else if(Direction == -1)
 		{
-			for(int i = 0; i < this._Size.y; i++)
+			for(int i = 0; i < this._Size.x; i++)
 			{
-				for(int j = 0; j < this._Size.x; j++)
+				for(int j = 0; j < this._Size.y; j++)
 				{
-					NewFields[((int)this._Size.y) - j - 1, i] = this._Fields[i,j];
+					NewFields[i,j] = this._Fields[(int)this._Size.y - j - 1, i];
 				}
 			}
 		}
@@ -133,7 +139,6 @@ public class Layout
 		this._Rotation += Direction;
 		if(this._Rotation > 3) this._Rotation = 0;
 		if(this._Rotation < 0) this._Rotation = 3;
-		Debug.Log(this._Rotation);
 		this.Print();
 	}
 	private Vector2 GetLocationDiff()
@@ -146,6 +151,7 @@ public class Layout
 	}
 	private void Print()
 	{
+		Debug.Log("Layout Print");
 		for(int i = 0; i < this._Size.y; i++)
 		{
 			string Line = "";

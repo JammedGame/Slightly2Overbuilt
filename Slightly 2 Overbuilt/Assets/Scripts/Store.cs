@@ -33,5 +33,14 @@ public class Store
 		Element Red = new Element(0, new Layout(3,1,new int[1,3] {{1,1,1}}), RedFragments);
 		Red.Paint = new Color(0.6f,0,0,1);
 		this._Elements.Add(Red);
+
+		List<Fragment> BlueFragments = new List<Fragment>();
+		BlueFragments.Add(new Fragment("", new Vector3(0, 				0, 				0)));
+		BlueFragments.Add(new Fragment("", new Vector3(0, 				0, 				Element.Size)));
+		BlueFragments.Add(new Fragment("", new Vector3(Element.Size, 		0, 				0)));
+		BlueFragments.Add(new Fragment("", new Vector3(2 * Element.Size, 	0, 				0)));
+		Element Blue = new Element(0, new Layout(3,2,new int[2,3] {{1,1,1}, {1,0,0}}), BlueFragments);
+		Blue.Paint = new Color(0,0,0.6f,1);
+		this._Elements.Add(Blue);
 	}
 }

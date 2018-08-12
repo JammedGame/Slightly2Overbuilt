@@ -55,9 +55,17 @@ public class BuildingBehaviour : MonoBehaviour
 		{
 			this._Construct.Rotate(1);
 		}
-		if (Input.GetKeyDown(KeyCode.Alpha2) && this._SelectedIndex != 1)
+		if (Input.GetKeyDown(KeyCode.Alpha1) && this._SelectedIndex != 0)
+		{
+			this.ChangeSelectedBuilding(0);
+		}
+		else if (Input.GetKeyDown(KeyCode.Alpha2) && this._SelectedIndex != 1)
 		{
 			this.ChangeSelectedBuilding(1);
+		}
+		else if (Input.GetKeyDown(KeyCode.Alpha3) && this._SelectedIndex != 2)
+		{
+			this.ChangeSelectedBuilding(2);
 		}
 		else if (Input.GetKeyDown(KeyCode.Alpha0) && this._SelectedIndex != -1)
 		{
@@ -75,10 +83,6 @@ public class BuildingBehaviour : MonoBehaviour
 					this.ChangeSelectedBuilding(-1);
 				}
 			}
-		}
-		if (Input.GetKeyDown(KeyCode.Alpha1) && this._SelectedIndex != 0)
-		{
-			this.ChangeSelectedBuilding(0);
 		}
 	}
 	private void ChangeSelectedBuilding(int Index)
