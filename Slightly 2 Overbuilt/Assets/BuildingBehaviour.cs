@@ -9,11 +9,13 @@ public class BuildingBehaviour : MonoBehaviour
 	private Element _Construct;
 	private GameObject _ConstructObject;
 	private Building _Building;
+	private Camera _Camera;
 	void Start ()
 	{
 		this._SelectedIndex = -1;
 		this._Grid = new Grid();
 		this._Building = new Building();
+		this._Camera = Camera.main;
 		this.CreateGridVisual();
 	}
 	void Update ()
@@ -28,6 +30,7 @@ public class BuildingBehaviour : MonoBehaviour
 	}
 	private GameObject CreateElement(Vector2 Location, Element Selected)
 	{
+		Selected.Floor = this._Building.CurrentFloor;
 		Element.Current = Selected;
 		Element.Current.Location = Location;
 		GameObject NewObject = new GameObject("ElementObject");
@@ -56,6 +59,18 @@ public class BuildingBehaviour : MonoBehaviour
 		{
 			this._Construct.Rotate(1);
 			this._Construct.ConstructAvailable = this._Building.CanBuild(Grid.CursorLocation, this._Construct.Layout);
+		}
+		if (Input.GetKeyDown(KeyCode.W))
+		{
+			this._Building.GoUp();
+			this.RepositionCamera();
+			this.ChangeSelectedBuilding(this._SelectedIndex);
+		}
+		else if (Input.GetKeyDown(KeyCode.S))
+		{
+			this._Building.GoDown();
+			this.RepositionCamera();
+			this.ChangeSelectedBuilding(this._SelectedIndex);
 		}
 		if (Input.GetKeyDown(KeyCode.Alpha1) && this._SelectedIndex != 0)
 		{
@@ -107,5 +122,10 @@ public class BuildingBehaviour : MonoBehaviour
 			this._Construct.Construct = true;
 			this._ConstructObject = this.CreateElement(new Vector2(-1,-1), this._Construct);
 		}
+	}
+	private void RepositionCamera()
+	{
+		Grid.Vertical = this._Building.CurrentFloor;
+		this._Camera.transform.position = new Vector3(-9.5f, 8 + this._Building.CurrentFloor * 1.8f, -9.5f);
 	}
 }

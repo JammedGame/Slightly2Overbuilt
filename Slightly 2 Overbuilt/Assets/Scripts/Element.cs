@@ -10,6 +10,7 @@ public class Element
 	private bool _Construct;
 	private bool _ConstructAvailable;
 	private int _ResType;
+	private int _Floor;
 	private Layout _Layout;
 	private Vector2 _Location;
 	private Color _Paint;
@@ -32,6 +33,11 @@ public class Element
 	{
 		get { return this._ResType; }
 		set { this._ResType = value; }
+	}
+	public int Floor
+	{
+		get { return this._Floor; }
+		set { this._Floor = value; }
 	}
 	public Layout Layout
 	{
@@ -59,6 +65,7 @@ public class Element
 		this._Construct = false;
 		this._ConstructAvailable = false;
 		this._ResType = 0;
+		this._Floor = 0;
 		this._Layout = new Layout(2,2);
 		this._Paint = new Color(1,1,1,1);
 		this._Location = new Vector2();
@@ -71,6 +78,7 @@ public class Element
 		this._Construct = false;
 		this._ConstructAvailable = false;
 		this._ResType = ResType;
+		this._Floor = 0;
 		this._Layout = Layout;
 		this._Paint = new Color(1,1,1,1);
 		this._Location = new Vector2();
@@ -82,6 +90,7 @@ public class Element
 		this._Construct = false;
 		this._ConstructAvailable = false;
 		this._ResType = Old._ResType;
+		this._Floor = Old._Floor;
 		this._Layout = Old._Layout.Copy();
 		this._Paint = new Color(Old._Paint.r,Old._Paint.g,Old._Paint.b,Old._Paint.a);
 		this._Location = new Vector2(Old._Location.x, Old._Location.y);
