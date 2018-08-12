@@ -8,6 +8,8 @@ public class BuildingBehaviour : MonoBehaviour
 	private Grid _Grid;
 	private Element _Construct;
 	private GameObject _ConstructObject;
+	private GameObject _Water;
+	private GameObject _Ground;
 	private Building _Building;
 	private Camera _Camera;
 	void Start ()
@@ -127,6 +129,14 @@ public class BuildingBehaviour : MonoBehaviour
 				}
 			}
 		}
+		if (Input.GetKeyDown(KeyCode.Z))
+		{
+			this.RotateCamera(1);
+		}
+		if (Input.GetKeyDown(KeyCode.C))
+		{
+			this.RotateCamera(-1);
+		}
 	}
 	private void ChangeSelectedBuilding(int Index)
 	{
@@ -154,6 +164,11 @@ public class BuildingBehaviour : MonoBehaviour
 		Grid.Vertical = this._Building.CurrentFloor;
 		this._Camera.transform.position = new Vector3(-9.5f, 8 + this._Building.CurrentFloor * 1.8f, -9.5f);
 	}
+	private void RotateCamera(int Mult)
+	{
+		this._Camera.transform.RotateAround(this._Ground.transform.position, new Vector3(0,1,0), Mult*90);
+		this._Water.transform.RotateAround(this._Ground.transform.position, new Vector3(0,1,0), Mult*90);
+	}
 	private void CreateEnvironment()
 	{
 		GameObject Water = GameObject.CreatePrimitive(PrimitiveType.Cube);
@@ -161,9 +176,11 @@ public class BuildingBehaviour : MonoBehaviour
 		Water.transform.position = new Vector3(0, -6, 0);
 		Water.transform.rotation = Quaternion.Euler(0,45,0);
 		Water.GetComponent<Renderer>().material.color = new Color(0.2f,0.3f,0.8f,1);
+		this._Water = Water;
 		GameObject Ground = GameObject.CreatePrimitive(PrimitiveType.Cube);
 		Ground.transform.localScale = new Vector3(5.2f * Element.Size, 3, 5.2f * Element.Size);
 		Ground.transform.position = new Vector3(0, -1.5f, 0);
 		Ground.GetComponent<Renderer>().material.color = new Color(0.6f, 0.6f,0.6f, 1.0f);
+		this._Ground = Ground;
 	}
 }
