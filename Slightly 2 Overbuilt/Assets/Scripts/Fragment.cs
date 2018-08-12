@@ -4,9 +4,15 @@ using UnityEngine;
 
 public class Fragment
 {
+	private int _Orientation;
 	private string _ArtName;
 	private Vector3 _Offset;
 	private GameObject _Object;
+	public int Orientation
+	{
+		get { return this._Orientation; }
+		set { this._Orientation = value; }
+	}
 	public string ArtName
 	{
 		get { return this._ArtName; }
@@ -25,17 +31,24 @@ public class Fragment
 	public Fragment()
 	{
 		this._ArtName = "";
+		this._Orientation = this.RandomOrientation();
 		this._Offset = new Vector3();
 	}
 	public Fragment(string ArtName, Vector3 Offset)
 	{
 		this._ArtName = ArtName;
+		this._Orientation = this.RandomOrientation();
 		this._Offset = Offset;
 	}
 	public Fragment(Fragment Old)
 	{
 		this._ArtName = Old._ArtName;
+		this._Orientation = Old._Orientation;
 		this._Offset = new Vector3(Old._Offset.x, Old._Offset.y, Old._Offset.z);
+	}
+	public int RandomOrientation()
+	{
+		return Random.Range(0,5);
 	}
 	public Fragment Copy()
 	{

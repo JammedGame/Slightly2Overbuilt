@@ -85,9 +85,9 @@ public class Store
 			else if(Chosen == 1)
 			{
 				Fragments.Add(new Fragment(this.RandomArt(), new Vector3(0, 				0, 				0)));
-				Fragments.Add(new Fragment(this.RandomArt(), new Vector3(Element.Size, 	0,				0)));
+				Fragments.Add(new Fragment(this.RandomArt(), new Vector3(Element.Size, 		0,				0)));
 				Fragments.Add(new Fragment(this.RandomArt(), new Vector3(0, 				0, 				Element.Size)));
-				Fragments.Add(new Fragment(this.RandomArt(), new Vector3(Element.Size, 	0, 				Element.Size)));
+				Fragments.Add(new Fragment(this.RandomArt(), new Vector3(Element.Size, 		0, 				Element.Size)));
 				Element NewElement = new Element(0, new Layout(2,2,new int[2,2] {{1,1},{1,1}}), Fragments);
 				return NewElement;
 			}
