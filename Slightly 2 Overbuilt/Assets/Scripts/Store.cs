@@ -58,6 +58,8 @@ public class Store
 			int EI = Random.Range(0,3);
 			if(Chosen == 0)
 			{
+				// XX
+				// X
 				Fragments.Add(new Fragment(this.RandomArt(), new Vector3(0, 				0, 				0)));
 				Fragments.Add(new Fragment(this.RandomArt(), new Vector3(Element.Size, 	0,				0)));
 				Fragments.Add(new Fragment(this.RandomArt(), new Vector3(0, 				0, 				Element.Size)));
@@ -74,6 +76,7 @@ public class Store
 			}
 			else if(Chosen == 1)
 			{
+				// XXX
 				Fragments.Add(new Fragment(this.RandomArt(), new Vector3(0, 				0, 				0)));
 				Fragments.Add(new Fragment(this.RandomArt(), new Vector3(Element.Size, 		0, 				0)));
 				Fragments.Add(new Fragment(this.RandomArt(), new Vector3(2 * Element.Size, 	0, 				0)));
@@ -95,6 +98,7 @@ public class Store
 			int EI = Random.Range(0,4);
 			if(Chosen == 0)
 			{
+				// XXXX
 				Fragments.Add(new Fragment(this.RandomArt(), new Vector3(0, 				0, 				0)));
 				Fragments.Add(new Fragment(this.RandomArt(), new Vector3(Element.Size, 		0, 				0)));
 				Fragments.Add(new Fragment(this.RandomArt(), new Vector3(2 * Element.Size, 	0, 				0)));
@@ -113,6 +117,8 @@ public class Store
 			}
 			else if(Chosen == 1)
 			{
+				// XX
+				// XX
 				Fragments.Add(new Fragment(this.RandomArt(), new Vector3(0, 				0, 				0)));
 				Fragments.Add(new Fragment(this.RandomArt(), new Vector3(Element.Size, 		0,				0)));
 				Fragments.Add(new Fragment(this.RandomArt(), new Vector3(0, 				0, 				Element.Size)));
@@ -131,6 +137,8 @@ public class Store
 			}
 			else if(Chosen == 2)
 			{
+				// XXX
+				// X
 				Fragments.Add(new Fragment(this.RandomArt(), new Vector3(0, 				0, 				0)));
 				Fragments.Add(new Fragment(this.RandomArt(), new Vector3(0, 				0, 				Element.Size)));
 				Fragments.Add(new Fragment(this.RandomArt(), new Vector3(Element.Size, 		0, 				0)));
@@ -149,6 +157,8 @@ public class Store
 			}
 			else if(Chosen == 3)
 			{
+				// XX
+				//  XX
 				Fragments.Add(new Fragment(this.RandomArt(), new Vector3(0, 				0, 				0)));
 				Fragments.Add(new Fragment(this.RandomArt(), new Vector3(Element.Size, 		0, 				0)));
 				Fragments.Add(new Fragment(this.RandomArt(), new Vector3(Element.Size, 		0, 				Element.Size)));
@@ -167,6 +177,8 @@ public class Store
 			}
 			else if(Chosen == 4)
 			{
+				// XXX
+				//  X
 				Fragments.Add(new Fragment(this.RandomArt(), new Vector3(0, 				0, 				0)));
 				Fragments.Add(new Fragment(this.RandomArt(), new Vector3(Element.Size, 		0, 				0)));
 				Fragments.Add(new Fragment(this.RandomArt(), new Vector3(Element.Size, 		0, 				Element.Size)));
@@ -180,6 +192,239 @@ public class Store
 					if(EI == 1) NewElement.ExtraLayout.Fields[0,1] = 1;
 					if(EI == 2) NewElement.ExtraLayout.Fields[1,1] = 1;
 					if(EI == 3) NewElement.ExtraLayout.Fields[0,2] = 1;
+				}
+				return NewElement;
+			}
+		}
+		else if(Size == 5)
+		{
+			int Chosen = Random.Range(0,10);
+			int EI = Random.Range(0,4);
+			if(Chosen == 0)
+			{
+				// XXX
+				// XX
+				Fragments.Add(new Fragment(this.RandomArt(), new Vector3(0, 				0, 				0)));
+				Fragments.Add(new Fragment(this.RandomArt(), new Vector3(Element.Size, 		0, 				0)));
+				Fragments.Add(new Fragment(this.RandomArt(), new Vector3(0, 				0, 				Element.Size)));
+				Fragments.Add(new Fragment(this.RandomArt(), new Vector3(Element.Size, 		0, 				Element.Size)));
+				Fragments.Add(new Fragment(this.RandomArt(), new Vector3(2 * Element.Size, 	0, 				0)));
+				Element NewElement = new Element(0, new Layout(3,2,new int[2,3] {{1,1,1}, {1,1,0}}), Fragments);
+				if(Extra != "")
+				{
+					NewElement.Extra = new Satelite(Extra, new Vector3(Fragments[EI].Offset.x, Element.Size, Fragments[EI].Offset.z));
+					NewElement.ExtraLayout = new Layout(3,2,new int[2,3] {{0,0,0}, {0,0,0}});
+					if(EI == 0) NewElement.ExtraLayout.Fields[0,0] = 1;
+					if(EI == 1) NewElement.ExtraLayout.Fields[0,1] = 1;
+					if(EI == 2) NewElement.ExtraLayout.Fields[1,0] = 1;
+					if(EI == 3) NewElement.ExtraLayout.Fields[1,1] = 1;
+					if(EI == 4) NewElement.ExtraLayout.Fields[0,2] = 1;
+				}
+				return NewElement;
+			}
+			else if(Chosen == 1)
+			{
+				// XX
+				//  XX
+				//  X
+				Fragments.Add(new Fragment(this.RandomArt(), new Vector3(0, 				0, 				0)));
+				Fragments.Add(new Fragment(this.RandomArt(), new Vector3(Element.Size,		0, 				0)));
+				Fragments.Add(new Fragment(this.RandomArt(), new Vector3(Element.Size, 		0, 				Element.Size)));
+				Fragments.Add(new Fragment(this.RandomArt(), new Vector3(2 * Element.Size, 	0, 				Element.Size)));
+				Fragments.Add(new Fragment(this.RandomArt(), new Vector3(Element.Size, 		0, 				2 * Element.Size)));
+				Element NewElement = new Element(0,new Layout(3,3,new int[3,3] {{1,1,0},{0,1,1},{0,1,0}}), Fragments);
+				if(Extra != "")
+				{
+					NewElement.Extra = new Satelite(Extra, new Vector3(Fragments[EI].Offset.x, Element.Size, Fragments[EI].Offset.z));
+					NewElement.ExtraLayout = new Layout(3,3,new int[3,3] {{0,0,0},{0,0,0},{0,0,0}});
+					if(EI == 0) NewElement.ExtraLayout.Fields[0,0] = 1;
+					if(EI == 1) NewElement.ExtraLayout.Fields[0,1] = 1;
+					if(EI == 2) NewElement.ExtraLayout.Fields[1,1] = 1;
+					if(EI == 3) NewElement.ExtraLayout.Fields[1,2] = 1;
+					if(EI == 4) NewElement.ExtraLayout.Fields[2,1] = 1;
+				}
+				return NewElement;
+			}
+			else if(Chosen == 2)
+			{
+				// X
+				// X
+				// X
+				// XX
+				Fragments.Add(new Fragment(this.RandomArt(), new Vector3(0, 				0, 				0)));
+				Fragments.Add(new Fragment(this.RandomArt(), new Vector3(Element.Size,		0, 				0)));
+				Fragments.Add(new Fragment(this.RandomArt(), new Vector3(2 * Element.Size,	0, 				0)));
+				Fragments.Add(new Fragment(this.RandomArt(), new Vector3(3 * Element.Size,	0, 				0)));
+				Fragments.Add(new Fragment(this.RandomArt(), new Vector3(0, 				0, 				Element.Size)));
+				Element NewElement = new Element(0, new Layout(4,2,new int[2,4] {{1,1,1,1},{1,0,0,0}}), Fragments);
+				if(Extra != "")
+				{
+					NewElement.Extra = new Satelite(Extra, new Vector3(Fragments[EI].Offset.x, Element.Size, Fragments[EI].Offset.z));
+					NewElement.ExtraLayout = new Layout(4,2,new int[2,4] {{0,0,0,0},{0,0,0,0}});
+					if(EI == 0) NewElement.ExtraLayout.Fields[0,0] = 1;
+					if(EI == 1) NewElement.ExtraLayout.Fields[0,1] = 1;
+					if(EI == 2) NewElement.ExtraLayout.Fields[0,2] = 1;
+					if(EI == 3) NewElement.ExtraLayout.Fields[0,3] = 1;
+					if(EI == 4) NewElement.ExtraLayout.Fields[1,0] = 1;
+				}
+				return NewElement;
+			}
+			else if(Chosen == 3)
+			{
+				//  X
+				// XXX
+				//  X
+				Fragments.Add(new Fragment(this.RandomArt(), new Vector3(0, 				0, 				Element.Size)));
+				Fragments.Add(new Fragment(this.RandomArt(), new Vector3(Element.Size,		0, 				0)));
+				Fragments.Add(new Fragment(this.RandomArt(), new Vector3(Element.Size, 		0, 				Element.Size)));
+				Fragments.Add(new Fragment(this.RandomArt(), new Vector3(2 * Element.Size, 	0, 				Element.Size)));
+				Fragments.Add(new Fragment(this.RandomArt(), new Vector3(Element.Size, 		0, 				2 * Element.Size)));
+				Element NewElement = new Element(0,new Layout(3,3,new int[3,3] {{0,1,0},{1,1,1},{0,1,0}}), Fragments);
+				if(Extra != "")
+				{
+					NewElement.Extra = new Satelite(Extra, new Vector3(Fragments[EI].Offset.x, Element.Size, Fragments[EI].Offset.z));
+					NewElement.ExtraLayout = new Layout(3,3,new int[3,3] {{0,0,0},{0,0,0},{0,0,0}});
+					if(EI == 0) NewElement.ExtraLayout.Fields[1,0] = 1;
+					if(EI == 1) NewElement.ExtraLayout.Fields[0,1] = 1;
+					if(EI == 2) NewElement.ExtraLayout.Fields[1,1] = 1;
+					if(EI == 3) NewElement.ExtraLayout.Fields[1,2] = 1;
+					if(EI == 4) NewElement.ExtraLayout.Fields[2,1] = 1;
+				}
+				return NewElement;
+			}
+			else if(Chosen == 4)
+			{
+				// XX
+				//  XXX
+				Fragments.Add(new Fragment(this.RandomArt(), new Vector3(0, 				0, 				0)));
+				Fragments.Add(new Fragment(this.RandomArt(), new Vector3(Element.Size, 		0, 				0)));
+				Fragments.Add(new Fragment(this.RandomArt(), new Vector3(Element.Size, 		0, 				Element.Size)));
+				Fragments.Add(new Fragment(this.RandomArt(), new Vector3(2 * Element.Size, 	0, 				Element.Size)));
+				Fragments.Add(new Fragment(this.RandomArt(), new Vector3(3 * Element.Size, 	0, 				Element.Size)));
+				Element NewElement = new Element(0, new Layout(4,2,new int[2,4] {{1,1,0,0},{0,1,1,1}}), Fragments);
+				if(Extra != "")
+				{
+					NewElement.Extra = new Satelite(Extra, new Vector3(Fragments[EI].Offset.x, Element.Size, Fragments[EI].Offset.z));
+					NewElement.ExtraLayout = new Layout(4,2,new int[2,4] {{0,0,0,0},{0,0,0,0}});
+					if(EI == 0) NewElement.ExtraLayout.Fields[0,0] = 1;
+					if(EI == 1) NewElement.ExtraLayout.Fields[0,1] = 1;
+					if(EI == 2) NewElement.ExtraLayout.Fields[1,1] = 1;
+					if(EI == 3) NewElement.ExtraLayout.Fields[1,2] = 1;
+					if(EI == 4) NewElement.ExtraLayout.Fields[1,3] = 1;
+				}
+				return NewElement;
+			}
+			else if(Chosen == 5)
+			{
+				// XXX
+				// X X
+				Fragments.Add(new Fragment(this.RandomArt(), new Vector3(0, 				0, 				0)));
+				Fragments.Add(new Fragment(this.RandomArt(), new Vector3(0, 				0, 				Element.Size)));
+				Fragments.Add(new Fragment(this.RandomArt(), new Vector3(Element.Size, 		0, 				0)));
+				Fragments.Add(new Fragment(this.RandomArt(), new Vector3(2 * Element.Size, 	0, 				0)));
+				Fragments.Add(new Fragment(this.RandomArt(), new Vector3(2 * Element.Size, 	0, 				Element.Size)));
+				Element NewElement = new Element(0, new Layout(3,2,new int[2,3] {{1,1,1}, {1,0,0}}), Fragments);
+				if(Extra != "")
+				{
+					NewElement.Extra = new Satelite(Extra, new Vector3(Fragments[EI].Offset.x, Element.Size, Fragments[EI].Offset.z));
+					NewElement.ExtraLayout = new Layout(3,2,new int[2,3] {{0,0,0}, {0,0,0}});
+					if(EI == 0) NewElement.ExtraLayout.Fields[0,0] = 1;
+					if(EI == 1) NewElement.ExtraLayout.Fields[1,0] = 1;
+					if(EI == 2) NewElement.ExtraLayout.Fields[0,1] = 1;
+					if(EI == 3) NewElement.ExtraLayout.Fields[0,2] = 1;
+					if(EI == 4) NewElement.ExtraLayout.Fields[1,2] = 1;
+				}
+				return NewElement;
+			}
+			else if(Chosen == 6)
+			{
+				// XXX
+				//  X
+				//  X
+				Fragments.Add(new Fragment(this.RandomArt(), new Vector3(0, 				0, 				0)));
+				Fragments.Add(new Fragment(this.RandomArt(), new Vector3(Element.Size,		0, 				0)));
+				Fragments.Add(new Fragment(this.RandomArt(), new Vector3(Element.Size, 		0, 				Element.Size)));
+				Fragments.Add(new Fragment(this.RandomArt(), new Vector3(2 * Element.Size, 	0, 				0)));
+				Fragments.Add(new Fragment(this.RandomArt(), new Vector3(Element.Size, 		0, 				2 * Element.Size)));
+				Element NewElement = new Element(0,new Layout(3,3,new int[3,3] {{1,1,1},{0,1,0},{0,1,0}}), Fragments);
+				if(Extra != "")
+				{
+					NewElement.Extra = new Satelite(Extra, new Vector3(Fragments[EI].Offset.x, Element.Size, Fragments[EI].Offset.z));
+					NewElement.ExtraLayout = new Layout(3,3,new int[3,3] {{0,0,0},{0,0,0},{0,0,0}});
+					if(EI == 0) NewElement.ExtraLayout.Fields[0,0] = 1;
+					if(EI == 1) NewElement.ExtraLayout.Fields[0,1] = 1;
+					if(EI == 2) NewElement.ExtraLayout.Fields[1,1] = 1;
+					if(EI == 3) NewElement.ExtraLayout.Fields[0,2] = 1;
+					if(EI == 4) NewElement.ExtraLayout.Fields[2,1] = 1;
+				}
+				return NewElement;
+			}
+			else if(Chosen == 7)
+			{
+				// XXX
+				// X
+				// X
+				Fragments.Add(new Fragment(this.RandomArt(), new Vector3(0, 				0, 				0)));
+				Fragments.Add(new Fragment(this.RandomArt(), new Vector3(Element.Size,		0, 				0)));
+				Fragments.Add(new Fragment(this.RandomArt(), new Vector3(2 * Element.Size,	0, 				0)));
+				Fragments.Add(new Fragment(this.RandomArt(), new Vector3(0, 				0, 				Element.Size)));
+				Fragments.Add(new Fragment(this.RandomArt(), new Vector3(0, 				0, 				2 * Element.Size)));
+				Element NewElement = new Element(0, new Layout(3,3,new int[3,3] {{1,1,1},{1,0,0},{1,0,0}}), Fragments);
+				if(Extra != "")
+				{
+					NewElement.Extra = new Satelite(Extra, new Vector3(Fragments[EI].Offset.x, Element.Size, Fragments[EI].Offset.z));
+					NewElement.ExtraLayout = new Layout(3,3,new int[3,3] {{1,1,1},{1,0,0},{1,0,0}});
+					if(EI == 0) NewElement.ExtraLayout.Fields[0,0] = 1;
+					if(EI == 1) NewElement.ExtraLayout.Fields[0,1] = 1;
+					if(EI == 2) NewElement.ExtraLayout.Fields[0,2] = 1;
+					if(EI == 3) NewElement.ExtraLayout.Fields[1,0] = 1;
+					if(EI == 4) NewElement.ExtraLayout.Fields[2,0] = 1;
+				}
+				return NewElement;
+			}
+			else if(Chosen == 8)
+			{
+				//  XX
+				// XX
+				// X
+				Fragments.Add(new Fragment(this.RandomArt(), new Vector3(0, 				0, 				0)));
+				Fragments.Add(new Fragment(this.RandomArt(), new Vector3(Element.Size,		0, 				0)));
+				Fragments.Add(new Fragment(this.RandomArt(), new Vector3(Element.Size,		0, 				Element.Size)));
+				Fragments.Add(new Fragment(this.RandomArt(), new Vector3(0, 				0, 				Element.Size)));
+				Fragments.Add(new Fragment(this.RandomArt(), new Vector3(0, 				0, 				2 * Element.Size)));
+				Element NewElement = new Element(0, new Layout(3,3,new int[3,3] {{0,1,1},{1,1,0},{1,0,0}}), Fragments);
+				if(Extra != "")
+				{
+					NewElement.Extra = new Satelite(Extra, new Vector3(Fragments[EI].Offset.x, Element.Size, Fragments[EI].Offset.z));
+					NewElement.ExtraLayout = new Layout(3,3,new int[3,3] {{1,1,1},{1,0,0},{1,0,0}});
+					if(EI == 0) NewElement.ExtraLayout.Fields[0,0] = 1;
+					if(EI == 1) NewElement.ExtraLayout.Fields[0,1] = 1;
+					if(EI == 2) NewElement.ExtraLayout.Fields[1,1] = 1;
+					if(EI == 3) NewElement.ExtraLayout.Fields[1,0] = 1;
+					if(EI == 4) NewElement.ExtraLayout.Fields[2,0] = 1;
+				}
+				return NewElement;
+			}
+			else if(Chosen == 9)
+			{
+				// XX
+				//  X
+				//  XX
+				Fragments.Add(new Fragment(this.RandomArt(), new Vector3(0, 				0, 				0)));
+				Fragments.Add(new Fragment(this.RandomArt(), new Vector3(Element.Size,		0, 				0)));
+				Fragments.Add(new Fragment(this.RandomArt(), new Vector3(Element.Size, 		0, 				Element.Size)));
+				Fragments.Add(new Fragment(this.RandomArt(), new Vector3(2 * Element.Size, 	0, 				2 * Element.Size)));
+				Fragments.Add(new Fragment(this.RandomArt(), new Vector3(Element.Size, 		0, 				2 * Element.Size)));
+				Element NewElement = new Element(0,new Layout(3,3,new int[3,3] {{1,1,0},{0,1,0},{0,1,1}}), Fragments);
+				if(Extra != "")
+				{
+					NewElement.Extra = new Satelite(Extra, new Vector3(Fragments[EI].Offset.x, Element.Size, Fragments[EI].Offset.z));
+					NewElement.ExtraLayout = new Layout(3,3,new int[3,3] {{0,0,0},{0,0,0},{0,0,0}});
+					if(EI == 0) NewElement.ExtraLayout.Fields[0,0] = 1;
+					if(EI == 1) NewElement.ExtraLayout.Fields[0,1] = 1;
+					if(EI == 2) NewElement.ExtraLayout.Fields[1,1] = 1;
+					if(EI == 3) NewElement.ExtraLayout.Fields[2,2] = 1;
+					if(EI == 4) NewElement.ExtraLayout.Fields[2,1] = 1;
 				}
 				return NewElement;
 			}
