@@ -22,25 +22,27 @@ public class Store
 		this.AddNewElement(2, new Color32(0xF9, 0x95, 0x03, 0xFF)); // Food
 		this.AddNewElement(2, new Color32(0x88, 0x72, 0x5D, 0xFF)); // Fuel
 		this.AddNewElement(3, new Color32(0xBD, 0x3D, 0x3C, 0xFF)); // Textile
-		this.AddNewElement(3, new Color32(0xE4, 0xBE, 0x5D, 0xFF)); // Wood
+		Element Wood = this.AddNewElement(3, new Color32(0xE4, 0xBE, 0x5D, 0xFF), "satelite02"); // Wood
+		Wood.Extra.Vertical = Element.Size * 3;
 		this.AddNewElement(3, new Color32(0xAE, 0xAC, 0x97, 0xFF)); // Metal
 		this.AddNewElement(3, new Color32(0x51, 0xE6, 0xAE, 0xFF)); // Glass
-		this.AddNewElement(4, new Color32(0x65, 0x64, 0x76, 0xFF)); // Rubber
+		this.AddNewElement(4, new Color32(0x65, 0x64, 0x76, 0xFF), "satelite01"); // Rubber
 		this.AddNewElement(4, new Color32(0xFF, 0xF7, 0xFA, 0xFF)); // Plastic
 		this.AddNewElement(4, new Color32(0xFF, 0xFF, 0x85, 0xFF)); // Electicity
 	}
-	private void AddNewElement(int Size, Color Paint)
+	private Element AddNewElement(int Size, Color Paint, string Extra = "")
 	{
-		Element NewElement = this.GenerateElementLayout(Size);
+		Element NewElement = this.GenerateElementLayout(Size, Extra);
 		NewElement.Paint = Paint;
 		this._Elements.Add(NewElement);
+		return NewElement;
 	}
 	private string RandomArt()
 	{
 		int Index = Random.Range(0,6);
 		return "cube0"+(Index+1);
 	}
-	private Element GenerateElementLayout(int Size)
+	private Element GenerateElementLayout(int Size, string Extra)
 	{
 		List<Fragment> Fragments = new List<Fragment>();
 		if(Size == 2)
@@ -53,12 +55,21 @@ public class Store
 		else if(Size == 3)
 		{
 			int Chosen = Random.Range(0,2);
+			int EI = Random.Range(0,3);
 			if(Chosen == 0)
 			{
 				Fragments.Add(new Fragment(this.RandomArt(), new Vector3(0, 				0, 				0)));
 				Fragments.Add(new Fragment(this.RandomArt(), new Vector3(Element.Size, 	0,				0)));
 				Fragments.Add(new Fragment(this.RandomArt(), new Vector3(0, 				0, 				Element.Size)));
 				Element NewElement = new Element(0, new Layout(2,2,new int[2,2] {{1,1},{1,0}}), Fragments);
+				if(Extra != "")
+				{
+					NewElement.Extra = new Satelite(Extra, new Vector3(Fragments[EI].Offset.x, Element.Size, Fragments[EI].Offset.z));
+					NewElement.ExtraLayout = new Layout(2,2,new int[2,2] {{0,0},{0,0}});
+					if(EI == 0) NewElement.ExtraLayout.Fields[0,0] = 1;
+					if(EI == 1) NewElement.ExtraLayout.Fields[0,1] = 1;
+					if(EI == 2) NewElement.ExtraLayout.Fields[1,0] = 1;
+				}
 				return NewElement;
 			}
 			else if(Chosen == 1)
@@ -67,12 +78,21 @@ public class Store
 				Fragments.Add(new Fragment(this.RandomArt(), new Vector3(Element.Size, 		0, 				0)));
 				Fragments.Add(new Fragment(this.RandomArt(), new Vector3(2 * Element.Size, 	0, 				0)));
 				Element NewElement = new Element(0, new Layout(3,1,new int[1,3] {{1,1,1}}), Fragments);
+				if(Extra != "")
+				{
+					NewElement.Extra = new Satelite(Extra, new Vector3(Fragments[EI].Offset.x, Element.Size, Fragments[EI].Offset.z));
+					NewElement.ExtraLayout = new Layout(3,1,new int[1,3] {{0,0,0}});
+					if(EI == 0) NewElement.ExtraLayout.Fields[0,0] = 1;
+					if(EI == 1) NewElement.ExtraLayout.Fields[0,1] = 1;
+					if(EI == 2) NewElement.ExtraLayout.Fields[0,2] = 1;
+				}
 				return NewElement;
 			}
 		}
 		else if(Size == 4)
 		{
 			int Chosen = Random.Range(0,5);
+			int EI = Random.Range(0,4);
 			if(Chosen == 0)
 			{
 				Fragments.Add(new Fragment(this.RandomArt(), new Vector3(0, 				0, 				0)));
@@ -80,6 +100,15 @@ public class Store
 				Fragments.Add(new Fragment(this.RandomArt(), new Vector3(2 * Element.Size, 	0, 				0)));
 				Fragments.Add(new Fragment(this.RandomArt(), new Vector3(3 * Element.Size, 	0, 				0)));
 				Element NewElement = new Element(0, new Layout(4,1,new int[1,4] {{1,1,1,1}}), Fragments);
+				if(Extra != "")
+				{
+					NewElement.Extra = new Satelite(Extra, new Vector3(Fragments[EI].Offset.x, Element.Size, Fragments[EI].Offset.z));
+					NewElement.ExtraLayout = new Layout(4,1,new int[1,4] {{0,0,0,0}});
+					if(EI == 0) NewElement.ExtraLayout.Fields[0,0] = 1;
+					if(EI == 1) NewElement.ExtraLayout.Fields[0,1] = 1;
+					if(EI == 2) NewElement.ExtraLayout.Fields[0,2] = 1;
+					if(EI == 3) NewElement.ExtraLayout.Fields[0,3] = 1;
+				}
 				return NewElement;
 			}
 			else if(Chosen == 1)
@@ -89,6 +118,15 @@ public class Store
 				Fragments.Add(new Fragment(this.RandomArt(), new Vector3(0, 				0, 				Element.Size)));
 				Fragments.Add(new Fragment(this.RandomArt(), new Vector3(Element.Size, 		0, 				Element.Size)));
 				Element NewElement = new Element(0, new Layout(2,2,new int[2,2] {{1,1},{1,1}}), Fragments);
+				if(Extra != "")
+				{
+					NewElement.Extra = new Satelite(Extra, new Vector3(Fragments[EI].Offset.x, Element.Size, Fragments[EI].Offset.z));
+					NewElement.ExtraLayout = new Layout(2,2,new int[2,2] {{0,0},{0,0}});
+					if(EI == 0) NewElement.ExtraLayout.Fields[0,0] = 1;
+					if(EI == 1) NewElement.ExtraLayout.Fields[0,1] = 1;
+					if(EI == 2) NewElement.ExtraLayout.Fields[1,0] = 1;
+					if(EI == 3) NewElement.ExtraLayout.Fields[1,1] = 1;
+				}
 				return NewElement;
 			}
 			else if(Chosen == 2)
@@ -98,15 +136,33 @@ public class Store
 				Fragments.Add(new Fragment(this.RandomArt(), new Vector3(Element.Size, 		0, 				0)));
 				Fragments.Add(new Fragment(this.RandomArt(), new Vector3(2 * Element.Size, 	0, 				0)));
 				Element NewElement = new Element(0, new Layout(3,2,new int[2,3] {{1,1,1}, {1,0,0}}), Fragments);
+				if(Extra != "")
+				{
+					NewElement.Extra = new Satelite(Extra, new Vector3(Fragments[EI].Offset.x, Element.Size, Fragments[EI].Offset.z));
+					NewElement.ExtraLayout = new Layout(3,2,new int[2,3] {{0,0,0}, {0,0,0}});
+					if(EI == 0) NewElement.ExtraLayout.Fields[0,0] = 1;
+					if(EI == 1) NewElement.ExtraLayout.Fields[1,0] = 1;
+					if(EI == 2) NewElement.ExtraLayout.Fields[0,1] = 1;
+					if(EI == 3) NewElement.ExtraLayout.Fields[0,2] = 1;
+				}
 				return NewElement;
 			}
 			else if(Chosen == 3)
 			{
-				Fragments.Add(new Fragment(this.RandomArt(), new Vector3(0, 					0, 				0)));
+				Fragments.Add(new Fragment(this.RandomArt(), new Vector3(0, 				0, 				0)));
 				Fragments.Add(new Fragment(this.RandomArt(), new Vector3(Element.Size, 		0, 				0)));
 				Fragments.Add(new Fragment(this.RandomArt(), new Vector3(Element.Size, 		0, 				Element.Size)));
 				Fragments.Add(new Fragment(this.RandomArt(), new Vector3(2 * Element.Size, 	0, 				Element.Size)));
 				Element NewElement = new Element(0, new Layout(3,2,new int[2,3] {{1,1,0}, {0,1,1}}), Fragments);
+				if(Extra != "")
+				{
+					NewElement.Extra = new Satelite(Extra, new Vector3(Fragments[EI].Offset.x, Element.Size, Fragments[EI].Offset.z));
+					NewElement.ExtraLayout = new Layout(3,2,new int[2,3] {{0,0,0}, {0,0,0}});
+					if(EI == 0) NewElement.ExtraLayout.Fields[0,0] = 1;
+					if(EI == 1) NewElement.ExtraLayout.Fields[0,1] = 1;
+					if(EI == 2) NewElement.ExtraLayout.Fields[1,1] = 1;
+					if(EI == 3) NewElement.ExtraLayout.Fields[1,2] = 1;
+				}
 				return NewElement;
 			}
 			else if(Chosen == 4)
@@ -116,6 +172,15 @@ public class Store
 				Fragments.Add(new Fragment(this.RandomArt(), new Vector3(Element.Size, 		0, 				Element.Size)));
 				Fragments.Add(new Fragment(this.RandomArt(), new Vector3(2 * Element.Size, 	0, 				0)));
 				Element NewElement = new Element(0, new Layout(3,2,new int[2,3] {{1,1,1}, {0,1,0}}), Fragments);
+				if(Extra != "")
+				{
+					NewElement.Extra = new Satelite(Extra, new Vector3(Fragments[EI].Offset.x, Element.Size, Fragments[EI].Offset.z));
+					NewElement.ExtraLayout = new Layout(3,2,new int[2,3] {{0,0,0}, {0,0,0}});
+					if(EI == 0) NewElement.ExtraLayout.Fields[0,0] = 1;
+					if(EI == 1) NewElement.ExtraLayout.Fields[0,1] = 1;
+					if(EI == 2) NewElement.ExtraLayout.Fields[1,1] = 1;
+					if(EI == 3) NewElement.ExtraLayout.Fields[0,2] = 1;
+				}
 				return NewElement;
 			}
 		}

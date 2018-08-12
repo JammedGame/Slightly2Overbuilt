@@ -94,6 +94,20 @@ public class Layout
 		}
 		this.Print();
     }
+	public void ApplySatelite(Vector2 Location, Layout L2)
+    {
+		for(int i = 0; i < L2._Size.y; i++)
+		{
+			for(int j = 0; j < L2._Size.x; j++)
+			{
+				if(L2._Fields[i,j] == 1)
+				{
+					this._Fields[(int)Location.y + i, (int)Location.x + j] = 2;
+				}
+			}
+		}
+		this.Print();
+    }
 	private bool Check(Vector2 Location, Layout L1, Layout L2)
 	{
 		if(Location.x < 0 || Location.y < 0) return false;

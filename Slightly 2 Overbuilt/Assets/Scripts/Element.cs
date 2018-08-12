@@ -12,8 +12,10 @@ public class Element
 	private int _ResType;
 	private int _Floor;
 	private Layout _Layout;
+	private Layout _ExtraLayout;
 	private Vector2 _Location;
 	private Color _Paint;
+	private Satelite _Extra;
 	private List<Fragment> _Fragments;
 	public bool ToDestroy
 	{
@@ -44,6 +46,11 @@ public class Element
 		get { return this._Layout; }
 		set { this._Layout = value; }
 	}
+	public Layout ExtraLayout
+	{
+		get { return this._ExtraLayout; }
+		set { this._ExtraLayout = value; }
+	}
 	public Vector2 Location
 	{
 		get { return this._Location; }
@@ -53,6 +60,11 @@ public class Element
 	{
 		get { return this._Paint; }
 		set { this._Paint = value; }
+	}
+	public Satelite Extra
+	{
+		get { return this._Extra; }
+		set { this._Extra = value; }
 	}
 	public List<Fragment> Fragments
 	{
@@ -95,6 +107,7 @@ public class Element
 		this._Paint = new Color(Old._Paint.r,Old._Paint.g,Old._Paint.b,Old._Paint.a);
 		this._Location = new Vector2(Old._Location.x, Old._Location.y);
 		this._Fragments = new List<Fragment>();
+		if(Old._Extra != null) this._Extra = Old._Extra.Copy();
 		for(int i = 0; i < Old._Fragments.Count; i++) this._Fragments.Add(Old._Fragments[i].Copy());
 	}
 	public Element Copy()

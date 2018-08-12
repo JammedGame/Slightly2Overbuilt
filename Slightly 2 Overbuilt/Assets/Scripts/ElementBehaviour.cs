@@ -20,6 +20,10 @@ public class ElementBehaviour : MonoBehaviour
 			{
 				Destroy(this._Data.Fragments[i].Object);
 			}
+			if(this._Data.Extra != null)
+			{
+				Destroy(this._Data.Extra.Object);
+			}
 			Destroy(gameObject);
 		}
 		else UpdateFragmentObjects();
@@ -46,6 +50,26 @@ public class ElementBehaviour : MonoBehaviour
 				else FragmentObject.GetComponent<Renderer>().material.color = new Color(1,0,0,1);
 			}
 		}
+		if(this._Data.Extra != null)
+		{
+			GameObject FragmentObject = this._Data.Extra.Object;
+			if (this._Data.Location.x < 0) FragmentObject.transform.position = new Vector3(0, - 1.2f * Element.Size, 0);
+			else
+			{
+				float Vertical = 0.5f * Element.Size + this._Data.Floor * Element.Size + this._Data.Extra.Offset.y;
+				Vector2 Location = new Vector2(this._Data.Location.x + this._Data.Layout.LocationDiff.x, this._Data.Location.y + this._Data.Layout.LocationDiff.y);
+				if(this._Data.Layout.Rotation == 0) FragmentObject.transform.position = new Vector3(((Location.x - 2) * Element.Size) + this._Data.Extra.Offset.x, Vertical, - ((Location.y - 2) * Element.Size) - this._Data.Extra.Offset.z);
+				else if(this._Data.Layout.Rotation == 1) FragmentObject.transform.position = new Vector3(((Location.x - 2) * Element.Size) + this._Data.Extra.Offset.z, Vertical, - ((Location.y - 2) * Element.Size) + this._Data.Extra.Offset.x);
+				else if(this._Data.Layout.Rotation == 2) FragmentObject.transform.position = new Vector3(((Location.x - 2) * Element.Size) - this._Data.Extra.Offset.x, Vertical, - ((Location.y - 2) * Element.Size) + this._Data.Extra.Offset.z);
+				else if(this._Data.Layout.Rotation == 3) FragmentObject.transform.position = new Vector3(((Location.x - 2) * Element.Size) - this._Data.Extra.Offset.z, Vertical, - ((Location.y - 2) * Element.Size) - this._Data.Extra.Offset.x);
+			}
+			if(this._Data.Construct)
+			{
+				if(this._Data.ConstructAvailable) FragmentObject.GetComponent<Renderer>().material.color = new Color(1,1,1,1);
+				else FragmentObject.GetComponent<Renderer>().material.color = new Color(1,0,0,1);
+			}
+			else FragmentObject.GetComponent<Renderer>().material.color = this._Data.Paint;
+		}
 	}
 	private void CreateFragmentObjects() 
 	{
@@ -69,6 +93,30 @@ public class ElementBehaviour : MonoBehaviour
 			else FragmentObject.GetComponent<Renderer>().material.color = new Color(1,1,1,1);
 			Destroy(FragmentObject.GetComponent<Collider>());
 			this._Data.Fragments[i].Object = FragmentObject;
+		}
+		if(this._Data.Extra != null)
+		{
+			Debug.Log("hoj"+this._Data.Extra.Vertical);
+			GameObject FragmentObject = GameObject.Instantiate((GameObject)Resources.Load(this._Data.Extra.ArtName));
+			float Factor = 50;
+			if(this._Data.Extra.ArtName == "satelite02") Factor = 0.4f;
+			FragmentObject.transform.localScale = new Vector3(Element.Size * Factor, Element.Size * Factor, Element.Size * Factor);
+			FragmentObject.transform.rotation = Quaternion.Euler(270,90 * this._Data.Extra.Orientation,0);
+			if (this._Data.Location.x < 0) FragmentObject.transform.position = new Vector3(0, - 1.2f * Element.Size, 0);
+			else
+			{
+				float Vertical = 0.5f * Element.Size + this._Data.Floor * Element.Size + this._Data.Extra.Offset.y + this._Data.Extra.Vertical;
+				Debug.Log("hojpa"+Vertical);
+				Vector2 Location = new Vector2(this._Data.Location.x + this._Data.Layout.LocationDiff.x, this._Data.Location.y + this._Data.Layout.LocationDiff.y);
+				if(this._Data.Layout.Rotation == 0) FragmentObject.transform.position = new Vector3(((Location.x - 2) * Element.Size) + this._Data.Extra.Offset.x, Vertical, - ((Location.y - 2) * Element.Size) - this._Data.Extra.Offset.z);
+				else if(this._Data.Layout.Rotation == 1) FragmentObject.transform.position = new Vector3(((Location.x - 2) * Element.Size) + this._Data.Extra.Offset.z, Vertical, - ((Location.y - 2) * Element.Size) + this._Data.Extra.Offset.x);
+				else if(this._Data.Layout.Rotation == 2) FragmentObject.transform.position = new Vector3(((Location.x - 2) * Element.Size) - this._Data.Extra.Offset.x, Vertical, - ((Location.y - 2) * Element.Size) + this._Data.Extra.Offset.z);
+				else if(this._Data.Layout.Rotation == 3) FragmentObject.transform.position = new Vector3(((Location.x - 2) * Element.Size) - this._Data.Extra.Offset.z, Vertical, - ((Location.y - 2) * Element.Size) - this._Data.Extra.Offset.x);
+			}
+			if(!this._Data.Construct) FragmentObject.GetComponent<Renderer>().material.color = this._Data.Paint;
+			else FragmentObject.GetComponent<Renderer>().material.color = new Color(1,1,1,1);
+			Destroy(FragmentObject.GetComponent<Collider>());
+			this._Data.Extra.Object = FragmentObject;
 		}
 	}
 }

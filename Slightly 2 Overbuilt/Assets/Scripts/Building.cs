@@ -38,8 +38,10 @@ public class Building
 	}
 	public void Build(Vector2 Location, Element NewElement)
 	{
+		if(this.OnMaxFloor()) this.AddFloor();
 		this._Floors[this._CurrentFloor].Elements.Add(NewElement);
 		this._Floors[this._CurrentFloor].Layout.Apply(Location, NewElement.Layout);
+		//if(NewElement.Extra != null) this._Floors[this._CurrentFloor+1].Layout.ApplySatelite(Location, NewElement.ExtraLayout);
 	}
 	public void GoUp()
 	{
