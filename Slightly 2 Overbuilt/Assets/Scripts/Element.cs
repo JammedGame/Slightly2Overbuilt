@@ -6,7 +6,9 @@ public class Element
 {
 	public static float Size = 1.8f;
 	public static Element Current;
+	public static Element CurrentPreview;
 	private bool _ToDestroy;
+	private bool _Preview;
 	private bool _Construct;
 	private bool _ConstructAvailable;
 	private int _ResType;
@@ -21,6 +23,11 @@ public class Element
 	public bool ToDestroy
 	{
 		get { return this._ToDestroy; }
+	}
+	public bool Preview
+	{
+		get { return this._Preview; }
+		set { this._Preview = value; }
 	}
 	public bool Construct
 	{
@@ -81,6 +88,7 @@ public class Element
 	{
 		this._ToDestroy = false;
 		this._Construct = false;
+		this._Preview = false;
 		this._ConstructAvailable = false;
 		this._ResType = 0;
 		this._Floor = 0;
@@ -95,6 +103,7 @@ public class Element
 	{
 		this._ToDestroy = false;
 		this._Construct = false;
+		this._Preview = false;
 		this._ConstructAvailable = false;
 		this._ResType = ResType;
 		this._Floor = 0;
@@ -108,6 +117,7 @@ public class Element
 	{
 		this._ToDestroy = false;
 		this._Construct = false;
+		this._Preview = false;
 		this._ConstructAvailable = false;
 		this._ResType = Old._ResType;
 		this._Floor = Old._Floor;

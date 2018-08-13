@@ -35,6 +35,7 @@ public class BuildingBehaviour : MonoBehaviour
 	}
 	private GameObject CreateElement(Vector2 Location, Element Selected)
 	{
+		GameObject Default;
 		Selected.Floor = this._Building.CurrentFloor;
 		Element.Current = Selected;
 		Element.Current.Location = Location;
@@ -128,6 +129,7 @@ public class BuildingBehaviour : MonoBehaviour
 					this._Building.Build(Grid.CursorLocation, NewElement);
 					this.CreateElement(Grid.CursorLocation, NewElement);
 					this.ChangeSelectedBuilding(-1);
+					this._Preview.SetForPreview(null, this._Building.CurrentFloor);
 				}
 			}
 		}
@@ -152,11 +154,13 @@ public class BuildingBehaviour : MonoBehaviour
 			Grid.Visible = false;
 			this._Construct = null;
 			this._ConstructObject = null;
+			this._Preview.SetForPreview(null, this._Building.CurrentFloor);
 		}
 		else 
 		{
 			Grid.Visible = true;
 			this._Construct = this._Building.Pool.Elements[this._SelectedIndex].Copy();
+			this._Preview.SetForPreview(this._Construct, this._Building.CurrentFloor);
 			this._Construct.Construct = true;
 			this._ConstructObject = this.CreateElement(new Vector2(-1,-1), this._Construct);
 		}
