@@ -84,7 +84,7 @@ public class Element
 		this._ConstructAvailable = false;
 		this._ResType = 0;
 		this._Floor = 0;
-		this._Scale = 1;
+		this._Scale = 0.5f;
 		this._Layout = new Layout(2,2);
 		this._Paint = new Color(1,1,1,1);
 		this._Location = new Vector2();
@@ -98,7 +98,7 @@ public class Element
 		this._ConstructAvailable = false;
 		this._ResType = ResType;
 		this._Floor = 0;
-		this._Scale = 1;
+		this._Scale = 0.5f;
 		this._Layout = Layout;
 		this._Paint = new Color(1,1,1,1);
 		this._Location = new Vector2();

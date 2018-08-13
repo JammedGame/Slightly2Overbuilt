@@ -59,21 +59,22 @@ public class ElementBehaviour : MonoBehaviour
 	{
 		float Factor = 50;
 		if(Extra && E.Extra.ArtName == "satelite02") Factor = 0.4f;
+		float OSize = Element.Size * E.Scale;
 		if(New)
 		{
-			O.transform.localScale = new Vector3(Element.Size * Factor, Element.Size * Factor, Element.Size * Factor);
+			O.transform.localScale = new Vector3(OSize * Factor, OSize * Factor, OSize * Factor);
 			O.transform.rotation = Quaternion.Euler(270,90 * F.Orientation,0);
 		}
-		if (E.Location.x < 0) O.transform.position = new Vector3(0, - 2.0f * Element.Size, 0);
+		if (E.Location.x < 0) O.transform.position = new Vector3(0, - 2.0f * OSize, 0);
 		else
 		{
-			float Vertical = 0.5f * Element.Size + E.Floor * Element.Size;
+			float Vertical = 0.5f * OSize + E.Floor * OSize;
 			if(Extra) Vertical += E.Extra.Offset.y + E.Extra.Vertical;
 			Vector2 Location = new Vector2(E.Location.x + E.Layout.LocationDiff.x, E.Location.y + E.Layout.LocationDiff.y);
-			if(E.Layout.Rotation == 0) O.transform.position = new Vector3(((Location.x - 2) * Element.Size) + F.Offset.x, Vertical, - ((Location.y - 2) * Element.Size) - F.Offset.z);
-			else if(E.Layout.Rotation == 1) O.transform.position = new Vector3(((Location.x - 2) * Element.Size) + F.Offset.z, Vertical, - ((Location.y - 2) * Element.Size) + F.Offset.x);
-			else if(E.Layout.Rotation == 2) O.transform.position = new Vector3(((Location.x - 2) * Element.Size) - F.Offset.x, Vertical, - ((Location.y - 2) * Element.Size) + F.Offset.z);
-			else if(E.Layout.Rotation == 3) O.transform.position = new Vector3(((Location.x - 2) * Element.Size) - F.Offset.z, Vertical, - ((Location.y - 2) * Element.Size) - F.Offset.x);
+			if(E.Layout.Rotation == 0) O.transform.position = new Vector3(((Location.x - 2) * OSize) + F.Offset.x, Vertical, - ((Location.y - 2) * OSize) - F.Offset.z);
+			else if(E.Layout.Rotation == 1) O.transform.position = new Vector3(((Location.x - 2) * OSize) + F.Offset.z, Vertical, - ((Location.y - 2) * OSize) + F.Offset.x);
+			else if(E.Layout.Rotation == 2) O.transform.position = new Vector3(((Location.x - 2) * OSize) - F.Offset.x, Vertical, - ((Location.y - 2) * OSize) + F.Offset.z);
+			else if(E.Layout.Rotation == 3) O.transform.position = new Vector3(((Location.x - 2) * OSize) - F.Offset.z, Vertical, - ((Location.y - 2) * OSize) - F.Offset.x);
 		}
 		if(E.Construct)
 		{
