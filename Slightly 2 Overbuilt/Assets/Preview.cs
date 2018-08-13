@@ -27,7 +27,7 @@ public class Preview
 	{
 		GameObject Ground = GameObject.CreatePrimitive(PrimitiveType.Cube);
 		Ground.name = "PreviewPlatform";
-		Ground.transform.localScale = new Vector3(2.0f * Element.Size, 0.125f * Element.Size, 2.0f * Element.Size);
+		Ground.transform.localScale = new Vector3(2.1f * Element.Size, 0.125f * Element.Size, 2.1f * Element.Size);
 		Ground.transform.position = new Vector3(0, -2.0f, 0);
 		Ground.GetComponent<Renderer>().material.color = new Color(0.3f, 0.3f, 0.3f, 1.0f);
 		this._Platform = Ground;
@@ -51,15 +51,15 @@ public class Preview
 			NewObject.tag = "PreviewElement";
 			NewObject.AddComponent<ElementBehaviour>();
 			float XOffset = 0;
-			if(E.Layout.Size.x == 1) XOffset = 1.5f * Element.Size;
+			if(E.Layout.Size.x == 1) XOffset = 0.75f * Element.Size;
 			if(E.Layout.Size.x == 2) XOffset = 0.5f * Element.Size;
 			if(E.Layout.Size.x == 3) XOffset = 0.25f * Element.Size;
 			float YOffset = 0;
-			if(E.Layout.Size.y == 1) YOffset = 1.5f * Element.Size;
+			if(E.Layout.Size.y == 1) YOffset = 0.75f * Element.Size;
 			if(E.Layout.Size.y == 2) YOffset = 0.5f * Element.Size;
 			if(E.Layout.Size.y == 3) YOffset = 0.25f * Element.Size;
-			this._Platform.transform.localScale = new Vector3(E.Layout.Size.x * 0.5f * Element.Size, 0.125f * Element.Size, E.Layout.Size.y * 0.5f * Element.Size);
-			this._Platform.transform.position = new Vector3(-6.25f * Element.Size - XOffset, (( 1 + Floor ) * Element.Size) - 0.0625f * Element.Size, -1.75f * Element.Size + XOffset);
+			this._Platform.transform.localScale = new Vector3((E.Layout.Size.x * 0.5f + 0.1f) * Element.Size, 0.125f * Element.Size, (E.Layout.Size.y * 0.5f + 0.1f) * Element.Size);
+			this._Platform.transform.position = new Vector3(-6.25f * Element.Size - XOffset - 0.025f * Element.Size, (( 1 + Floor ) * Element.Size) - 0.0625f * Element.Size, -1.75f * Element.Size + YOffset +  - 0.025f * Element.Size);
 		}
 		else
 		{
