@@ -5,6 +5,7 @@ using UnityEngine;
 public class BuildingBehaviour : MonoBehaviour
 {
 	public static int PreviewIndex = -1;
+	public static BuildingBehaviour Single;
 	private int _SelectedIndex;
 	private Grid _Grid;
 	private Element _Construct;
@@ -23,6 +24,7 @@ public class BuildingBehaviour : MonoBehaviour
 		this._Preview = new Preview();
 		this.CreateGridVisual();
 		this.CreateEnvironment();
+		BuildingBehaviour.Single = this;
 	}
 	void Update ()
 	{
@@ -143,7 +145,7 @@ public class BuildingBehaviour : MonoBehaviour
 			this.RotateCamera(-1);
 		}
 	}
-	private void ChangeSelectedBuilding(int Index)
+	public void ChangeSelectedBuilding(int Index)
 	{
 		this._SelectedIndex = Index;
 		if(this._Construct != null)
@@ -155,7 +157,6 @@ public class BuildingBehaviour : MonoBehaviour
 			Grid.Visible = false;
 			this._Construct = null;
 			this._ConstructObject = null;
-			
 		}
 		else 
 		{
