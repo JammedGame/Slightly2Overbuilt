@@ -12,6 +12,7 @@ public class BuildingBehaviour : MonoBehaviour
 	private GameObject _ConstructObject;
 	private GameObject _Water;
 	private GameObject _Ground;
+	private GameObject _Sky;
 	private Building _Building;
 	private Camera _Camera;
 	private Preview _Preview;
@@ -66,7 +67,7 @@ public class BuildingBehaviour : MonoBehaviour
 			this._Construct.Rotate(-1);
 			this._Construct.ConstructAvailable = this._Building.CanBuild(Grid.CursorLocation, this._Construct.Layout);
 		}
-		else if (Input.GetKeyDown(KeyCode.D) && this._SelectedIndex != -1)
+		else if ((Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.Mouse1)) && this._SelectedIndex != -1)
 		{
 			this._Construct.Rotate(1);
 			this._Construct.ConstructAvailable = this._Building.CanBuild(Grid.CursorLocation, this._Construct.Layout);
@@ -188,6 +189,14 @@ public class BuildingBehaviour : MonoBehaviour
 		Ground.transform.localScale = new Vector3(5.2f * Element.Size, 3, 5.2f * Element.Size);
 		Ground.transform.position = new Vector3(0, -1.5f, 0);
 		Ground.GetComponent<Renderer>().material.color = new Color(0.6f, 0.6f,0.6f, 1.0f);
+		this._Ground = Ground;
+		GameObject Sky = GameObject.CreatePrimitive(PrimitiveType.Cube);
+		Sky.transform.localScale = new Vector3(Element.Size * 16, Element.Size * 20, 5.2f * Element.Size);
+		Sky.transform.position = new Vector3(10, Element.Size * 9, 10);
+		Sky.transform.rotation = Quaternion.Euler(0,45,0);
+		Texture2D tex = Resources.Load("nebo") as Texture2D;
+		Sky.GetComponent<Renderer>().material.color = new Color(0.8f, 0.8f, 1.0f, 1.0f);
+		Sky.GetComponent<Renderer>().material.mainTexture = tex;
 		this._Ground = Ground;
 	}
 	private void CheckPreview()
