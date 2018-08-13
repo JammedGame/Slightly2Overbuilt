@@ -162,7 +162,6 @@ public class BuildingBehaviour : MonoBehaviour
 		{
 			Grid.Visible = true;
 			this._Construct = this._Building.Pool.Elements[this._SelectedIndex].Copy();
-			this._Preview.SetForPreview(this._Construct, this._Building.CurrentFloor);
 			this._Construct.Construct = true;
 			this._ConstructObject = this.CreateElement(new Vector2(-1,-1), this._Construct);
 		}
@@ -193,6 +192,7 @@ public class BuildingBehaviour : MonoBehaviour
 	}
 	private void CheckPreview()
 	{
+		if(this._Preview == null) return; 
 		if(BuildingBehaviour.PreviewIndex == -1) this._Preview.SetForPreview(null, this._Building.CurrentFloor);
 		else this._Preview.SetForPreview(this._Building.Pool.Elements[BuildingBehaviour.PreviewIndex], this._Building.CurrentFloor);
 	}

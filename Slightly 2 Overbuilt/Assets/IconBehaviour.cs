@@ -17,9 +17,9 @@ public class IconBehaviour : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 	void Update ()
 	{
 		int index = int.Parse(gameObject.tag);
-		Grid.CursorLocation = new Vector2(-1,-1);
 		if (this._MouseIn && Input.GetKeyDown(KeyCode.Mouse0))
 		{
+			Grid.CursorLocation = new Vector2(-1,-1);
 			BuildingBehaviour.Single.ChangeSelectedBuilding(index);
 		}
 	}
