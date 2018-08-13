@@ -12,12 +12,14 @@ public class BuildingBehaviour : MonoBehaviour
 	private GameObject _Ground;
 	private Building _Building;
 	private Camera _Camera;
+	private Preview _Preview;
 	void Start ()
 	{
 		this._SelectedIndex = -1;
 		this._Grid = new Grid();
 		this._Building = new Building();
 		this._Camera = Camera.main;
+		this._Preview = new Preview();
 		this.CreateGridVisual();
 		this.CreateEnvironment();
 	}
@@ -133,7 +135,7 @@ public class BuildingBehaviour : MonoBehaviour
 		{
 			this.RotateCamera(1);
 		}
-		if (Input.GetKeyDown(KeyCode.C))
+		else if (Input.GetKeyDown(KeyCode.C))
 		{
 			this.RotateCamera(-1);
 		}
