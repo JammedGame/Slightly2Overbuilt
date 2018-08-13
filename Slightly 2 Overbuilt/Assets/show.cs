@@ -16,13 +16,10 @@ public class show : MonoBehaviour {
         resurs1.SetActive(false);
         resurs2.SetActive(false);
         resurs3.SetActive(false);
-
     }
 
     public void prikazi() {
-
-  
         resurs1.SetActive(true);
-
+        
     }
 }

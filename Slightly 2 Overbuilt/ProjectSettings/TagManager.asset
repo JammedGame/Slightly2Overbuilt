@@ -30,6 +30,7 @@ TagManager:
   - 23
   - 24
   - 25
+  - PreviewElement
   layers:
   - Default
   - TransparentFX

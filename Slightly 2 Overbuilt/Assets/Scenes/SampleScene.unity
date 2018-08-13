@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -217,13 +217,17 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1393673599724750, guid: 2a8855a41b99c79408e50bb15f737131, type: 2}
       propertyPath: m_Name
-      value: metal
+      value: Textile
       objectReference: {fileID: 0}
     - target: {fileID: 114516485082150826, guid: 2a8855a41b99c79408e50bb15f737131,
         type: 2}
       propertyPath: m_Texture
       value: 
-      objectReference: {fileID: 2800000, guid: d50f7a30aa6f61b428aff717027cfedd, type: 3}
+      objectReference: {fileID: 2800000, guid: 244aa87eb3f92f44da22f499c649b42c, type: 3}
+    - target: {fileID: 1393673599724750, guid: 2a8855a41b99c79408e50bb15f737131, type: 2}
+      propertyPath: m_TagString
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2a8855a41b99c79408e50bb15f737131, type: 2}
   m_IsPrefabAsset: 0
@@ -447,13 +451,17 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1393673599724750, guid: 2a8855a41b99c79408e50bb15f737131, type: 2}
       propertyPath: m_Name
-      value: farmaceutika
+      value: Rubber
       objectReference: {fileID: 0}
     - target: {fileID: 114516485082150826, guid: 2a8855a41b99c79408e50bb15f737131,
         type: 2}
       propertyPath: m_Texture
       value: 
-      objectReference: {fileID: 2800000, guid: 435216d33b5575b4da20e58fcda7274a, type: 3}
+      objectReference: {fileID: 2800000, guid: 0a39545da13b0c64980847ed42271839, type: 3}
+    - target: {fileID: 1393673599724750, guid: 2a8855a41b99c79408e50bb15f737131, type: 2}
+      propertyPath: m_TagString
+      value: 7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2a8855a41b99c79408e50bb15f737131, type: 2}
   m_IsPrefabAsset: 0
@@ -566,13 +574,22 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1393673599724750, guid: 2a8855a41b99c79408e50bb15f737131, type: 2}
       propertyPath: m_Name
-      value: staklo
+      value: Food
       objectReference: {fileID: 0}
     - target: {fileID: 114516485082150826, guid: 2a8855a41b99c79408e50bb15f737131,
         type: 2}
       propertyPath: m_Texture
       value: 
-      objectReference: {fileID: 2800000, guid: dcd1690b5c82f084e95ca22881cf45d0, type: 3}
+      objectReference: {fileID: 2800000, guid: 9ca201fc65bd6fd4292f250ea090eb05, type: 3}
+    - target: {fileID: 1393673599724750, guid: 2a8855a41b99c79408e50bb15f737131, type: 2}
+      propertyPath: m_TagString
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114604649780812666, guid: 2a8855a41b99c79408e50bb15f737131,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2a8855a41b99c79408e50bb15f737131, type: 2}
   m_IsPrefabAsset: 0
@@ -962,13 +979,17 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1393673599724750, guid: 2a8855a41b99c79408e50bb15f737131, type: 2}
       propertyPath: m_Name
-      value: gorivo
+      value: Pharmacy
       objectReference: {fileID: 0}
     - target: {fileID: 114516485082150826, guid: 2a8855a41b99c79408e50bb15f737131,
         type: 2}
       propertyPath: m_Texture
       value: 
-      objectReference: {fileID: 2800000, guid: f2efc5be6ecb7d94bb358e248c7430cf, type: 3}
+      objectReference: {fileID: 2800000, guid: 435216d33b5575b4da20e58fcda7274a, type: 3}
+    - target: {fileID: 1393673599724750, guid: 2a8855a41b99c79408e50bb15f737131, type: 2}
+      propertyPath: m_TagString
+      value: 11
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2a8855a41b99c79408e50bb15f737131, type: 2}
   m_IsPrefabAsset: 0
@@ -984,6 +1005,11 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 2109418293}
     m_Modifications:
+    - target: {fileID: 114527701897034846, guid: 2a8855a41b99c79408e50bb15f737131,
+        type: 2}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 224548565744372434, guid: 2a8855a41b99c79408e50bb15f737131,
         type: 2}
       propertyPath: m_LocalPosition.x
@@ -1081,7 +1107,42 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1393673599724750, guid: 2a8855a41b99c79408e50bb15f737131, type: 2}
       propertyPath: m_Name
-      value: drvo
+      value: Water
+      objectReference: {fileID: 0}
+    - target: {fileID: 1393673599724750, guid: 2a8855a41b99c79408e50bb15f737131, type: 2}
+      propertyPath: m_TagString
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114516485082150826, guid: 2a8855a41b99c79408e50bb15f737131,
+        type: 2}
+      propertyPath: m_Texture
+      value: 
+      objectReference: {fileID: 2800000, guid: f2bf3275127fa5849b99135cfbf0ef13, type: 3}
+    - target: {fileID: 114527701897034846, guid: 2a8855a41b99c79408e50bb15f737131,
+        type: 2}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114527701897034846, guid: 2a8855a41b99c79408e50bb15f737131,
+        type: 2}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114527701897034846, guid: 2a8855a41b99c79408e50bb15f737131,
+        type: 2}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 114499217806659034, guid: 355b70a7472df0e4c968a71f5a20fb5e,
+        type: 2}
+    - target: {fileID: 114527701897034846, guid: 2a8855a41b99c79408e50bb15f737131,
+        type: 2}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: prikazi
+      objectReference: {fileID: 0}
+    - target: {fileID: 114527701897034846, guid: 2a8855a41b99c79408e50bb15f737131,
+        type: 2}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2a8855a41b99c79408e50bb15f737131, type: 2}
@@ -1295,17 +1356,21 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1393673599724750, guid: 2a8855a41b99c79408e50bb15f737131, type: 2}
       propertyPath: m_Name
-      value: voda
+      value: Electronics
       objectReference: {fileID: 0}
     - target: {fileID: 114516485082150826, guid: 2a8855a41b99c79408e50bb15f737131,
         type: 2}
       propertyPath: m_Texture
       value: 
-      objectReference: {fileID: 2800000, guid: f2bf3275127fa5849b99135cfbf0ef13, type: 3}
+      objectReference: {fileID: 2800000, guid: f4360aad8a89e77449a5c752960a72a7, type: 3}
     - target: {fileID: 114516485082150826, guid: 2a8855a41b99c79408e50bb15f737131,
         type: 2}
       propertyPath: m_Color.a
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1393673599724750, guid: 2a8855a41b99c79408e50bb15f737131, type: 2}
+      propertyPath: m_TagString
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2a8855a41b99c79408e50bb15f737131, type: 2}
@@ -1558,13 +1623,13 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1393673599724750, guid: 2a8855a41b99c79408e50bb15f737131, type: 2}
       propertyPath: m_Name
-      value: guma
+      value: Metal
       objectReference: {fileID: 0}
     - target: {fileID: 114516485082150826, guid: 2a8855a41b99c79408e50bb15f737131,
         type: 2}
       propertyPath: m_Texture
       value: 
-      objectReference: {fileID: 2800000, guid: 0a39545da13b0c64980847ed42271839, type: 3}
+      objectReference: {fileID: 2800000, guid: d50f7a30aa6f61b428aff717027cfedd, type: 3}
     - target: {fileID: 114828279345404882, guid: 2a8855a41b99c79408e50bb15f737131,
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
@@ -1575,6 +1640,10 @@ Prefab:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1709291035}
+    - target: {fileID: 1393673599724750, guid: 2a8855a41b99c79408e50bb15f737131, type: 2}
+      propertyPath: m_TagString
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2a8855a41b99c79408e50bb15f737131, type: 2}
   m_IsPrefabAsset: 0
@@ -1687,13 +1756,17 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1393673599724750, guid: 2a8855a41b99c79408e50bb15f737131, type: 2}
       propertyPath: m_Name
-      value: hrana
+      value: Wood
       objectReference: {fileID: 0}
     - target: {fileID: 114516485082150826, guid: 2a8855a41b99c79408e50bb15f737131,
         type: 2}
       propertyPath: m_Texture
       value: 
-      objectReference: {fileID: 2800000, guid: 9ca201fc65bd6fd4292f250ea090eb05, type: 3}
+      objectReference: {fileID: 2800000, guid: 3ee6c88ff7651d8429c76d038e7fa2b9, type: 3}
+    - target: {fileID: 1393673599724750, guid: 2a8855a41b99c79408e50bb15f737131, type: 2}
+      propertyPath: m_TagString
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2a8855a41b99c79408e50bb15f737131, type: 2}
   m_IsPrefabAsset: 0
@@ -1801,13 +1874,17 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1393673599724750, guid: 2a8855a41b99c79408e50bb15f737131, type: 2}
       propertyPath: m_Name
-      value: elektronika
+      value: Glass
       objectReference: {fileID: 0}
     - target: {fileID: 114516485082150826, guid: 2a8855a41b99c79408e50bb15f737131,
         type: 2}
       propertyPath: m_Texture
       value: 
-      objectReference: {fileID: 2800000, guid: f4360aad8a89e77449a5c752960a72a7, type: 3}
+      objectReference: {fileID: 2800000, guid: dcd1690b5c82f084e95ca22881cf45d0, type: 3}
+    - target: {fileID: 1393673599724750, guid: 2a8855a41b99c79408e50bb15f737131, type: 2}
+      propertyPath: m_TagString
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2a8855a41b99c79408e50bb15f737131, type: 2}
   m_IsPrefabAsset: 0
@@ -1925,13 +2002,17 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1393673599724750, guid: 2a8855a41b99c79408e50bb15f737131, type: 2}
       propertyPath: m_Name
-      value: struja
+      value: Plastic
       objectReference: {fileID: 0}
     - target: {fileID: 114516485082150826, guid: 2a8855a41b99c79408e50bb15f737131,
         type: 2}
       propertyPath: m_Texture
       value: 
-      objectReference: {fileID: 2800000, guid: 2e53b831a13be60448753c4245bc5aec, type: 3}
+      objectReference: {fileID: 2800000, guid: c87a96ca6911a384ea3d9a638d6f5d01, type: 3}
+    - target: {fileID: 1393673599724750, guid: 2a8855a41b99c79408e50bb15f737131, type: 2}
+      propertyPath: m_TagString
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2a8855a41b99c79408e50bb15f737131, type: 2}
   m_IsPrefabAsset: 0
@@ -2256,13 +2337,17 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1393673599724750, guid: 2a8855a41b99c79408e50bb15f737131, type: 2}
       propertyPath: m_Name
-      value: tekstil
+      value: Electricity
       objectReference: {fileID: 0}
     - target: {fileID: 114516485082150826, guid: 2a8855a41b99c79408e50bb15f737131,
         type: 2}
       propertyPath: m_Texture
       value: 
-      objectReference: {fileID: 2800000, guid: 244aa87eb3f92f44da22f499c649b42c, type: 3}
+      objectReference: {fileID: 2800000, guid: 2e53b831a13be60448753c4245bc5aec, type: 3}
+    - target: {fileID: 1393673599724750, guid: 2a8855a41b99c79408e50bb15f737131, type: 2}
+      propertyPath: m_TagString
+      value: 9
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2a8855a41b99c79408e50bb15f737131, type: 2}
   m_IsPrefabAsset: 0
@@ -2381,7 +2466,11 @@ Prefab:
         type: 2}
       propertyPath: m_Texture
       value: 
-      objectReference: {fileID: 2800000, guid: c87a96ca6911a384ea3d9a638d6f5d01, type: 3}
+      objectReference: {fileID: 2800000, guid: f2efc5be6ecb7d94bb358e248c7430cf, type: 3}
+    - target: {fileID: 1393673599724750, guid: 2a8855a41b99c79408e50bb15f737131, type: 2}
+      propertyPath: m_TagString
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2a8855a41b99c79408e50bb15f737131, type: 2}
   m_IsPrefabAsset: 0

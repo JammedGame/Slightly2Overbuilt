@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class BuildingBehaviour : MonoBehaviour
 {
+	public static int PreviewIndex = -1;
 	private int _SelectedIndex;
 	private Grid _Grid;
 	private Element _Construct;
@@ -27,6 +28,7 @@ public class BuildingBehaviour : MonoBehaviour
 	{
 		CheckBuildingSelected();
 		MoveConstructObject();
+		CheckPreview();
 	}
 	private void CreateGridVisual()
 	{
@@ -129,7 +131,6 @@ public class BuildingBehaviour : MonoBehaviour
 					this._Building.Build(Grid.CursorLocation, NewElement);
 					this.CreateElement(Grid.CursorLocation, NewElement);
 					this.ChangeSelectedBuilding(-1);
-					this._Preview.SetForPreview(null, this._Building.CurrentFloor);
 				}
 			}
 		}
@@ -154,7 +155,7 @@ public class BuildingBehaviour : MonoBehaviour
 			Grid.Visible = false;
 			this._Construct = null;
 			this._ConstructObject = null;
-			this._Preview.SetForPreview(null, this._Building.CurrentFloor);
+			
 		}
 		else 
 		{
@@ -188,5 +189,10 @@ public class BuildingBehaviour : MonoBehaviour
 		Ground.transform.position = new Vector3(0, -1.5f, 0);
 		Ground.GetComponent<Renderer>().material.color = new Color(0.6f, 0.6f,0.6f, 1.0f);
 		this._Ground = Ground;
+	}
+	private void CheckPreview()
+	{
+		if(BuildingBehaviour.PreviewIndex == -1 || BuildingBehaviour.PreviewIndex > 8) this._Preview.SetForPreview(null, this._Building.CurrentFloor);
+		else this._Preview.SetForPreview(this._Building.Pool.Elements[BuildingBehaviour.PreviewIndex], this._Building.CurrentFloor);
 	}
 }
