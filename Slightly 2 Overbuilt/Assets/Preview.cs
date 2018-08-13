@@ -29,4 +29,8 @@ public class Preview
 		Ground.transform.position = new Vector3(-6 * Element.Size, Element.Size, -2 * Element.Size);
 		Ground.GetComponent<Renderer>().material.color = new Color(0.3f, 0.3f, 0.3f, 1.0f);
 	}
+	public void SetForPreview(Element E)
+	{
+		
+	}
 }
