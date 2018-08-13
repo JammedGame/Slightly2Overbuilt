@@ -43,7 +43,6 @@ public class Building
 		this._Floors[this._CurrentFloor].Layout.Apply(Location, NewElement.Layout);
 		if(NewElement.ExtraLayout != null)
 		{
-			Debug.Log("Ertpu");
 			this._Floors[this._CurrentFloor].Layout.ApplySatelite(Location, NewElement.ExtraLayout);
 			this._Floors[this._CurrentFloor].Layout.Print();
 		}

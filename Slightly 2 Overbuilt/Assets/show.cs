@@ -19,7 +19,7 @@ public class show : MonoBehaviour {
     }
 
     public void prikazi() {
-        resurs1.SetActive(true);
+        //resurs1.SetActive(true);
         
     }
 }

@@ -29,6 +29,8 @@ public class Store
 		this.AddNewElement(4, new Color32(0x65, 0x64, 0x76, 0xFF), "satelite01"); // Rubber
 		this.AddNewElement(4, new Color32(0xFF, 0xF7, 0xFA, 0xFF)); // Plastic
 		this.AddNewElement(4, new Color32(0xFF, 0xFF, 0x85, 0xFF)); // Electicity
+		this.AddNewElement(5, new Color32(0x4A, 0x93, 0x44, 0xFF)); // Electronics
+		this.AddNewElement(5, new Color32(0x02, 0x97, 0x5D, 0xFF)); // Pharmaceuticals
 	}
 	private Element AddNewElement(int Size, Color Paint, string Extra = "")
 	{
