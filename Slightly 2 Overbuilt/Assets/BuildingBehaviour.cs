@@ -65,6 +65,7 @@ public class BuildingBehaviour : MonoBehaviour
 	}
 	public void FloorUp()
 	{
+		if(!this._Building.IsGoUpPossible()) return;
 		this._Building.GoUp();
 		this.RepositionCamera();
 		this.ChangeSelectedBuilding(this._SelectedIndex);

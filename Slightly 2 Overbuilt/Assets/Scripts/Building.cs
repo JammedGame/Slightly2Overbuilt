@@ -49,6 +49,10 @@ public class Building
 			this._Floors[this._CurrentFloor].Layout.Print();
 		}
 	}
+	public bool IsGoUpPossible()
+	{
+		return this._Floors[this._CurrentFloor].Elements.Count > 0;
+	}
 	public void GoUp()
 	{
 		if(this.OnMaxFloor()) this.AddFloor();
