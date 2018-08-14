@@ -22,8 +22,8 @@ GameObject:
   - component: {fileID: 222871170211965226}
   - component: {fileID: 114516485082150826}
   - component: {fileID: 114828279345404882}
-  - component: {fileID: 114527701897034846}
   - component: {fileID: 114604649780812666}
+  - component: {fileID: 114527701897034846}
   m_Layer: 5
   m_Name: LeftPanelIcon
   m_TagString: Untagged

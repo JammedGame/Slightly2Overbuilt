@@ -38,4 +38,14 @@ public class ResourcePool
 		Index -= 3;
 		return this.Reqs[Index];
 	}
+	public bool AreReqsMet(int Index)
+	{
+		int[] Reqs = this.GetReqs(Index);
+		if(Reqs == null) return true;
+		for(int i =0; i < Reqs.Length; i++)
+		{
+			if(!this.IsDone(Reqs[i])) return false;
+		}
+		return true;
+	}
 }
