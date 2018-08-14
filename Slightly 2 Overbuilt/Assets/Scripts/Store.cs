@@ -21,14 +21,14 @@ public class Store
 		this.AddNewElement(2, new Color32(0xF9, 0x95, 0x03, 0xFF)); // Food
 		this.AddNewElement(2, new Color32(0x88, 0x72, 0x5D, 0xFF)); // Fuel
 		this.AddNewElement(3, new Color32(0xBD, 0x3D, 0x3C, 0xFF)); // Textile
-		Element Wood = this.AddNewElement(3, new Color32(0xE4, 0xBE, 0x5D, 0xFF), "satelite02"); // Wood
-		Wood.Extra.Vertical = Element.Size * 1.6f;
-		this.AddNewElement(3, new Color32(0xAE, 0xAC, 0x97, 0xFF)); // Metal
+		this.AddNewElement(3, new Color32(0xE4, 0xBE, 0x5D, 0xFF)); // Wood
+		this.AddNewElement(3, new Color32(0xAE, 0xAC, 0x97, 0xFF), "satelite04"); // Metal
 		this.AddNewElement(3, new Color32(0x51, 0xE6, 0xAE, 0xFF)); // Glass
 		this.AddNewElement(4, new Color32(0x65, 0x64, 0x76, 0xFF), "satelite01"); // Rubber
 		this.AddNewElement(4, new Color32(0xFF, 0xF7, 0xFA, 0xFF)); // Plastic
-		this.AddNewElement(4, new Color32(0xFF, 0xFF, 0x85, 0xFF)); // Electicity
-		this.AddNewElement(5, new Color32(0x4A, 0x93, 0x44, 0xFF)); // Electronics
+		Element Electicity = this.AddNewElement(4, new Color32(0xFF, 0xFF, 0x85, 0xFF), "satelite02"); // Electicity
+		Electicity.Extra.Vertical = Element.Size * 1.6f;
+		this.AddNewElement(5, new Color32(0x4A, 0x93, 0x44, 0xFF), "satelite03\"); // Electronics
 		this.AddNewElement(5, new Color32(0x02, 0x97, 0x5D, 0xFF)); // Pharmaceuticals
 		for(int i = 0; i < 12; i++) this._Elements[i].ResType = i;
 	}
