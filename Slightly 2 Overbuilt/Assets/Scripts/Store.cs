@@ -56,9 +56,9 @@ public class Store
 		}
 		else if(Size == 3)
 		{
-			int Chosen = Random.Range(0,2);
+			int Chosen = Random.Range(0,3);
 			int EI = Random.Range(0,3);
-			if(Chosen == 0)
+			if(Chosen == 1 || Chosen == 0)
 			{
 				// XX
 				// X
@@ -76,7 +76,7 @@ public class Store
 				}
 				return NewElement;
 			}
-			else if(Chosen == 1)
+			else if(Chosen == 2)
 			{
 				// XXX
 				Fragments.Add(new Fragment(this.RandomArt(), new Vector3(0, 				0, 				0)));

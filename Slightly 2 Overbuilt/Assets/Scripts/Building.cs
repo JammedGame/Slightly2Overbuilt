@@ -40,6 +40,7 @@ public class Building
 	public void Build(Vector2 Location, Element NewElement)
 	{
 		ResourcePool.Single.Do(NewElement.ResType);
+		ResourcePool.Single.UndoReqs(NewElement.ResType);
 		if(this.OnMaxFloor()) this.AddFloor();
 		this._Floors[this._CurrentFloor].Elements.Add(NewElement);
 		this._Floors[this._CurrentFloor].Layout.Apply(Location, NewElement.Layout);

@@ -26,7 +26,10 @@ public class ResourcePool
 	public void Do(int Index)
 	{
 		this.Done[Index] = true;
-		Debug.Log("Done"+Index);
+	}
+	public void Undo(int Index)
+	{
+		this.Done[Index] = false;
 	}
 	public bool IsDone(int Index)
 	{
@@ -47,5 +50,14 @@ public class ResourcePool
 			if(!this.IsDone(Reqs[i])) return false;
 		}
 		return true;
+	}
+	public void UndoReqs(int Index)
+	{
+		int[] Reqs = this.GetReqs(Index);
+		if(Reqs == null) return;
+		for(int i =0; i < Reqs.Length; i++)
+		{
+			this.Undo(Reqs[i]);
+		}
 	}
 }
