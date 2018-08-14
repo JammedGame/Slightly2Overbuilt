@@ -29,7 +29,7 @@ public class IconBehaviour : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 		}
 		else
 		{
-			if(ResourcePool.Single.IsDone(index))
+			if(ResourcePool.Single != null && ResourcePool.Single.IsDone(index))
 			{
 				gameObject.GetComponent<RawImage>().color = this._FullColor;
 			}

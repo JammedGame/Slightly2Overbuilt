@@ -12,7 +12,6 @@ public class ResIndicatorBehaviour : MonoBehaviour
 		this._LastIndex = -1;
 		this.InitTextures();
 		gameObject.transform.position = new Vector3(0, -100, 0);
-		Debug.Log(int.Parse(gameObject.tag));
 	}
 	void Update ()
 	{
@@ -37,7 +36,6 @@ public class ResIndicatorBehaviour : MonoBehaviour
         if(Reqs != null && Reqs.Length > index)
         {
             gameObject.transform.position = new Vector3(150 + index * 35, 60, 0);
-			Debug.Log(this._Textures[Reqs[index]]);
             gameObject.GetComponent<RawImage>().texture = this._Textures[Reqs[index]];
             if(ResourcePool.Single.IsDone(Reqs[index])) gameObject.GetComponent<RawImage>().color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
             else gameObject.GetComponent<RawImage>().color = new Color(0.3f, 0.3f, 0.3f, 1.0f);

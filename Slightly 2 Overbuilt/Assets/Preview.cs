@@ -5,6 +5,7 @@ using UnityEngine;
 public class Preview 
 {
 	private int _SelectedIndex;
+	private int _GlobalRotation;
 	private Element _Current;
 	private GameObject _Visual;
 	private GameObject _Platform;
@@ -21,6 +22,7 @@ public class Preview
 	public Preview()
 	{
 		this._SelectedIndex = -1;
+		this._GlobalRotation = 0;
 		this.CreatePlatform();
 	}
 	public void CreatePlatform()
@@ -31,6 +33,16 @@ public class Preview
 		Ground.transform.position = new Vector3(0, -2.0f, 0);
 		Ground.GetComponent<Renderer>().material.color = new Color(0.3f, 0.3f, 0.3f, 1.0f);
 		this._Platform = Ground;
+	}
+	public void Rotate(int Diff)
+	{
+		this._Platform.transform.RotateAround(new Vector3(0,0,0), new Vector3(0,1,0), Diff*90);
+		this._GlobalRotation += Diff;
+		if(this._Current != null)
+		{
+			this._Current.GlobalRotation = true;
+			this._Current.GlobalRotationValue = this._GlobalRotation;
+		}
 	}
 	public void SetForPreview(Element E, int Floor)
 	{
@@ -46,6 +58,8 @@ public class Preview
 			E.Paint = new Color(0.3f, 0.3f, 0.3f, 1.0f);
 			E.Scale = 0.5f;
 			E.Preview = true;
+			this._Current.GlobalRotation = true;
+			this._Current.GlobalRotationValue = this._GlobalRotation;
 			Element.CurrentPreview = E;
 			GameObject NewObject = new GameObject("PreviewElementObject");
 			NewObject.tag = "PreviewElement";
@@ -60,6 +74,8 @@ public class Preview
 			if(E.Layout.Size.y == 3) YOffset = 0.25f * Element.Size;
 			this._Platform.transform.localScale = new Vector3((E.Layout.Size.x * 0.5f + 0.1f) * Element.Size, 0.125f * Element.Size, (E.Layout.Size.y * 0.5f + 0.1f) * Element.Size);
 			this._Platform.transform.position = new Vector3(-6.25f * Element.Size - XOffset - 0.025f * Element.Size, (( 1 + Floor ) * Element.Size) - 0.0625f * Element.Size, -1.75f * Element.Size + YOffset +  - 0.025f * Element.Size);
+			this._Platform.transform.rotation = Quaternion.Euler(0,0,0);
+			this._Platform.transform.RotateAround(new Vector3(0,0,0), new Vector3(0,1,0), this._GlobalRotation * 90);
 		}
 		else
 		{

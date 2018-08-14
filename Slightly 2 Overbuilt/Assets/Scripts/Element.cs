@@ -11,6 +11,8 @@ public class Element
 	private bool _Preview;
 	private bool _Construct;
 	private bool _ConstructAvailable;
+	private bool _GlobalRotation;
+	private int _GlobalRotationValue;
 	private int _ResType;
 	private int _Floor;
 	private float _Scale;
@@ -34,10 +36,20 @@ public class Element
 		get { return this._Construct; }
 		set { this._Construct = value; }
 	}
+	public bool GlobalRotation
+	{
+		get { return this._GlobalRotation; }
+		set { this._GlobalRotation = value; }
+	}
 	public bool ConstructAvailable
 	{
 		get { return this._ConstructAvailable; }
 		set { this._ConstructAvailable = value; }
+	}
+	public int GlobalRotationValue
+	{
+		get { return this._GlobalRotationValue; }
+		set { this._GlobalRotationValue = value; }
 	}
 	public int ResType
 	{
@@ -89,7 +101,9 @@ public class Element
 		this._ToDestroy = false;
 		this._Construct = false;
 		this._Preview = false;
+		this._GlobalRotation = false;
 		this._ConstructAvailable = false;
+		this._GlobalRotationValue = 0;
 		this._ResType = 0;
 		this._Floor = 0;
 		this._Scale = 1;
@@ -104,7 +118,9 @@ public class Element
 		this._ToDestroy = false;
 		this._Construct = false;
 		this._Preview = false;
+		this._GlobalRotation = false;
 		this._ConstructAvailable = false;
+		this._GlobalRotationValue = 0;
 		this._ResType = ResType;
 		this._Floor = 0;
 		this._Scale = 1;
@@ -118,7 +134,9 @@ public class Element
 		this._ToDestroy = false;
 		this._Construct = false;
 		this._Preview = false;
+		this._GlobalRotation = false;
 		this._ConstructAvailable = false;
+		this._GlobalRotationValue = 0;
 		this._ResType = Old._ResType;
 		this._Floor = Old._Floor;
 		this._Scale = Old._Scale;

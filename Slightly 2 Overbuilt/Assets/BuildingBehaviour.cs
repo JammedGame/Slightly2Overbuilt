@@ -30,6 +30,11 @@ public class BuildingBehaviour : MonoBehaviour
 		this.CreateEnvironment();
 		BuildingBehaviour.Single = this;
 	}
+	public GameObject Ground
+	{
+		get { return this._Ground; }
+		set { this._Ground = value; }
+	}
 	void Update ()
 	{
 		CheckBuildingSelected();
@@ -193,6 +198,7 @@ public class BuildingBehaviour : MonoBehaviour
 		this._Camera.transform.RotateAround(this._Ground.transform.position, new Vector3(0,1,0), Mult*90);
 		this._Water.transform.RotateAround(this._Ground.transform.position, new Vector3(0,1,0), Mult*90);
 		this._Sky.transform.RotateAround(this._Ground.transform.position, new Vector3(0,1,0), Mult*90);
+		this._Preview.Rotate(Mult);
 	}
 	private void CreateEnvironment()
 	{

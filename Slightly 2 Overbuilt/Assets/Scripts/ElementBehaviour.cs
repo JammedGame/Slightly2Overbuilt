@@ -34,6 +34,7 @@ public class ElementBehaviour : MonoBehaviour
 			Destroy(gameObject);
 		}
 		else UpdateFragmentObjects();
+		this._Data.GlobalRotation = false;
 	}
 	private void UpdateFragmentObjects()
 	{
@@ -91,6 +92,11 @@ public class ElementBehaviour : MonoBehaviour
 			else O.GetComponent<Renderer>().material.color = new Color(1,0,0,1);
 		}
 		else O.GetComponent<Renderer>().material.color = E.Paint;
+		if(E.Preview)
+		{
+			O.transform.rotation = Quaternion.Euler(270,90 * F.Orientation,0);
+			O.transform.RotateAround(new Vector3(0,0,0), new Vector3(0,1,0), E.GlobalRotationValue * 90);
+		}
 		if(New)
 		{
 			Destroy(O.GetComponent<Collider>());

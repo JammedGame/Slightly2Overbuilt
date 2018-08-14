@@ -22,7 +22,7 @@ public class Satelite : Fragment
 	{
 		this._Vertical = Old._Vertical;
 	}
-	public Satelite Copy()
+	public new Satelite Copy()
 	{
 		return new Satelite(this);
 	}

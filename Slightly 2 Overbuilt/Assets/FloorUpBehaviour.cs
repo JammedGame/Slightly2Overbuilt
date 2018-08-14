@@ -21,8 +21,6 @@ public class FloorUpBehaviour : MonoBehaviour, IPointerEnterHandler, IPointerExi
 	public void OnPointerEnter(PointerEventData eventData)
     {
 		this._MouseIn = true;
-		int index = int.Parse(gameObject.tag);
-		BuildingBehaviour.PreviewIndex = index;
     }
 	public void OnPointerExit(PointerEventData pointerEventData)
     {
