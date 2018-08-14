@@ -20,6 +20,8 @@ public class BuildingBehaviour : MonoBehaviour
 	private int _LastFloor;
 	void Start ()
 	{
+		GameObject Message = GameObject.Find("WinMessage"); 
+		Message.SetActive(false);
 		this._SelectedIndex = -1;
 		this._Grid = new Grid();
 		this._Building = new Building();
@@ -214,6 +216,20 @@ public class BuildingBehaviour : MonoBehaviour
 		Ground.GetComponent<Renderer>().material.color = new Color(0.6f, 0.6f,0.6f, 1.0f);
 		this._Ground = Ground;
 		this._Sky = GameObject.Find("Sky"); 
+	}
+	public void HideMessage()
+	{
+		GameObject Message = GameObject.Find("Message"); 
+		Message.SetActive(false);
+	}
+	public void WinGame()
+	{
+		GameObject Message = GameObject.Find("WinMessage"); 
+		Message.SetActive(true);
+	}
+	public void FinishGame()
+	{
+		Application.Quit();
 	}
 	private void CheckPreview()
 	{

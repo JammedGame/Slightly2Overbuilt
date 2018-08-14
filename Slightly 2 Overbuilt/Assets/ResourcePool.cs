@@ -26,6 +26,7 @@ public class ResourcePool
 	}
 	public void Do(int Index)
 	{
+		if(Index == 12) BuildingBehaviour.Single.WinGame();
 		this.Done[Index] = true;
 	}
 	public void Undo(int Index)
