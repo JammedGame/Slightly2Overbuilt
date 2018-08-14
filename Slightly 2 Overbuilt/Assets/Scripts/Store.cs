@@ -34,7 +34,7 @@ public class Store
 		List<Fragment> RocketFragments = new List<Fragment>();
 		RocketFragments.Add(new Fragment(this.RandomArt(), new Vector3(0, 				0, 				0)));
 		RocketFragments.Add(new Fragment(this.RandomArt(), new Vector3(Element.Size, 		0,				0)));
-		RocketFragments.Add(new Fragment("rockete", 		 new Vector3(0, 				0, 				Element.Size)));
+		RocketFragments.Add(new Fragment("rocket", 		 new Vector3(0, 				0, 				Element.Size)));
 		RocketFragments.Add(new Fragment(this.RandomArt(), new Vector3(Element.Size, 		0, 				Element.Size)));
 		Element Rocket = new Element(0, new Layout(2,2,new int[2,2] {{1,1},{1,1}}), RocketFragments);
 		Rocket.Paint = new Color32(0xFF, 0xF7, 0xFA, 0xFF);
