@@ -20,7 +20,7 @@ public class SceneToPlay : MonoBehaviour {
         else
             muzikaVolume = false;
 
-        SceneManager.LoadScene("PlayScene");
+        SceneManager.LoadScene("SampleScene");
 
         if (muzikaVolume)
             AudioListener.volume = 1f;

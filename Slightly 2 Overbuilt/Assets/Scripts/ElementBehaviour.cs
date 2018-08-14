@@ -34,7 +34,7 @@ public class ElementBehaviour : MonoBehaviour
 			Destroy(gameObject);
 		}
 		else UpdateFragmentObjects();
-		this._Data.GlobalRotation = false;
+		if(this._Data != null) this._Data.GlobalRotation = false;
 	}
 	private void UpdateFragmentObjects()
 	{
