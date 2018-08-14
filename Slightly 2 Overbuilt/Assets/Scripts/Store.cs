@@ -41,7 +41,7 @@ public class Store
 	}
 	private string RandomArt()
 	{
-		int Index = Random.Range(0,6);
+		int Index = Random.Range(0,9);
 		return "cube0"+(Index+1);
 	}
 	private Element GenerateElementLayout(int Size, string Extra)
