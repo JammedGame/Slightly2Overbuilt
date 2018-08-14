@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BuildingBehaviour : MonoBehaviour
 {
@@ -67,12 +68,14 @@ public class BuildingBehaviour : MonoBehaviour
 		this._Building.GoUp();
 		this.RepositionCamera();
 		this.ChangeSelectedBuilding(this._SelectedIndex);
+		this.UpdateFloorIndicator();
 	}
 	public void FloorDown()
 	{
 		this._Building.GoDown();
 		this.RepositionCamera();
 		this.ChangeSelectedBuilding(this._SelectedIndex);
+		this.UpdateFloorIndicator();
 	}
 	private void CheckBuildingSelected()
 	{
@@ -184,7 +187,7 @@ public class BuildingBehaviour : MonoBehaviour
 		this._LastFloor = this._Building.CurrentFloor;
 		this._Camera.transform.Translate(0, Diff * 1.8f, 0);
 	}
-	private void RotateCamera(int Mult)
+	public void RotateCamera(int Mult)
 	{
 		this._Camera.transform.RotateAround(this._Ground.transform.position, new Vector3(0,1,0), Mult*90);
 		this._Water.transform.RotateAround(this._Ground.transform.position, new Vector3(0,1,0), Mult*90);
@@ -210,5 +213,10 @@ public class BuildingBehaviour : MonoBehaviour
 		if(this._Preview == null) return; 
 		if(BuildingBehaviour.PreviewIndex == -1) this._Preview.SetForPreview(null, this._Building.CurrentFloor);
 		else this._Preview.SetForPreview(this._Building.Pool.Elements[BuildingBehaviour.PreviewIndex], this._Building.CurrentFloor);
+	}
+	private void UpdateFloorIndicator()
+	{
+		GameObject FI = GameObject.Find("FloorIndicator"); 
+		FI.GetComponent<Text>().text = (this._Building.CurrentFloor + 1) + "";
 	}
 }
