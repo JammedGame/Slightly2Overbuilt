@@ -16,6 +16,7 @@ public class BuildingBehaviour : MonoBehaviour
 	private Building _Building;
 	private Camera _Camera;
 	private Preview _Preview;
+	private int _LastFloor;
 	void Start ()
 	{
 		this._SelectedIndex = -1;
@@ -23,6 +24,7 @@ public class BuildingBehaviour : MonoBehaviour
 		this._Building = new Building();
 		this._Camera = Camera.main;
 		this._Preview = new Preview();
+		this._LastFloor = 0;
 		this.CreateGridVisual();
 		this.CreateEnvironment();
 		BuildingBehaviour.Single = this;
@@ -170,12 +172,15 @@ public class BuildingBehaviour : MonoBehaviour
 	private void RepositionCamera()
 	{
 		Grid.Vertical = this._Building.CurrentFloor;
-		this._Camera.transform.position = new Vector3(-9.5f, 8 + this._Building.CurrentFloor * 1.8f, -9.5f);
+		int Diff = this._Building.CurrentFloor - this._LastFloor;
+		this._LastFloor = this._Building.CurrentFloor;
+		this._Camera.transform.Translate(0, Diff * 1.8f, 0);
 	}
 	private void RotateCamera(int Mult)
 	{
 		this._Camera.transform.RotateAround(this._Ground.transform.position, new Vector3(0,1,0), Mult*90);
 		this._Water.transform.RotateAround(this._Ground.transform.position, new Vector3(0,1,0), Mult*90);
+		this._Sky.transform.RotateAround(this._Ground.transform.position, new Vector3(0,1,0), Mult*90);
 	}
 	private void CreateEnvironment()
 	{
@@ -190,14 +195,7 @@ public class BuildingBehaviour : MonoBehaviour
 		Ground.transform.position = new Vector3(0, -1.5f, 0);
 		Ground.GetComponent<Renderer>().material.color = new Color(0.6f, 0.6f,0.6f, 1.0f);
 		this._Ground = Ground;
-		GameObject Sky = GameObject.CreatePrimitive(PrimitiveType.Cube);
-		Sky.transform.localScale = new Vector3(Element.Size * 16, Element.Size * 20, 5.2f * Element.Size);
-		Sky.transform.position = new Vector3(10, Element.Size * 9, 10);
-		Sky.transform.rotation = Quaternion.Euler(0,45,0);
-		Texture2D tex = Resources.Load("nebo") as Texture2D;
-		Sky.GetComponent<Renderer>().material.color = new Color(0.8f, 0.8f, 1.0f, 1.0f);
-		Sky.GetComponent<Renderer>().material.mainTexture = tex;
-		this._Ground = Ground;
+		this._Sky = GameObject.Find("Sky"); 
 	}
 	private void CheckPreview()
 	{
