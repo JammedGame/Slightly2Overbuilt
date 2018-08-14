@@ -28,9 +28,17 @@ public class Store
 		this.AddNewElement(4, new Color32(0xFF, 0xF7, 0xFA, 0xFF)); // Plastic
 		Element Electicity = this.AddNewElement(4, new Color32(0xFF, 0xFF, 0x85, 0xFF), "satelite02"); // Electicity
 		Electicity.Extra.Vertical = Element.Size * 1.6f;
-		this.AddNewElement(5, new Color32(0x4A, 0x93, 0x44, 0xFF), "satelite03\"); // Electronics
+		this.AddNewElement(5, new Color32(0x4A, 0x93, 0x44, 0xFF), "satelite03"); // Electronics
 		this.AddNewElement(5, new Color32(0x02, 0x97, 0x5D, 0xFF)); // Pharmaceuticals
 		for(int i = 0; i < 12; i++) this._Elements[i].ResType = i;
+		List<Fragment> RocketFragments = new List<Fragment>();
+		RocketFragments.Add(new Fragment(this.RandomArt(), new Vector3(0, 				0, 				0)));
+		RocketFragments.Add(new Fragment(this.RandomArt(), new Vector3(Element.Size, 		0,				0)));
+		RocketFragments.Add(new Fragment("rockete", 		 new Vector3(0, 				0, 				Element.Size)));
+		RocketFragments.Add(new Fragment(this.RandomArt(), new Vector3(Element.Size, 		0, 				Element.Size)));
+		Element Rocket = new Element(0, new Layout(2,2,new int[2,2] {{1,1},{1,1}}), RocketFragments);
+		Rocket.Paint = new Color32(0xFF, 0xF7, 0xFA, 0xFF);
+		this._Elements.Add(Rocket);
 	}
 	private Element AddNewElement(int Size, Color Paint, string Extra = "")
 	{

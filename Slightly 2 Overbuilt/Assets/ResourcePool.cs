@@ -21,6 +21,7 @@ public class ResourcePool
 		this.Reqs.Add(new int[2]{2,5});
 		this.Reqs.Add(new int[3]{9,7,8});
 		this.Reqs.Add(new int[3]{8,0,9});
+		this.Reqs.Add(new int[3]{9,10,11});
 		ResourcePool.Single = this;
 	}
 	public void Do(int Index)
