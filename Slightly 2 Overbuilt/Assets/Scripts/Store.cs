@@ -17,7 +17,6 @@ public class Store
 	private void GenerateStore()
 	{
 		this._Elements = new List<Element>();
-
 		this.AddNewElement(2, new Color32(0x78, 0xB3, 0xB9, 0xFF)); // Water
 		this.AddNewElement(2, new Color32(0xF9, 0x95, 0x03, 0xFF)); // Food
 		this.AddNewElement(2, new Color32(0x88, 0x72, 0x5D, 0xFF)); // Fuel
@@ -31,6 +30,7 @@ public class Store
 		this.AddNewElement(4, new Color32(0xFF, 0xFF, 0x85, 0xFF)); // Electicity
 		this.AddNewElement(5, new Color32(0x4A, 0x93, 0x44, 0xFF)); // Electronics
 		this.AddNewElement(5, new Color32(0x02, 0x97, 0x5D, 0xFF)); // Pharmaceuticals
+		for(int i = 0; i < 12; i++) this._Elements[i].ResType = i;
 	}
 	private Element AddNewElement(int Size, Color Paint, string Extra = "")
 	{
@@ -208,9 +208,9 @@ public class Store
 				// XX
 				Fragments.Add(new Fragment(this.RandomArt(), new Vector3(0, 				0, 				0)));
 				Fragments.Add(new Fragment(this.RandomArt(), new Vector3(Element.Size, 		0, 				0)));
+				Fragments.Add(new Fragment(this.RandomArt(), new Vector3(2 * Element.Size, 	0, 				0)));
 				Fragments.Add(new Fragment(this.RandomArt(), new Vector3(0, 				0, 				Element.Size)));
 				Fragments.Add(new Fragment(this.RandomArt(), new Vector3(Element.Size, 		0, 				Element.Size)));
-				Fragments.Add(new Fragment(this.RandomArt(), new Vector3(2 * Element.Size, 	0, 				0)));
 				Element NewElement = new Element(0, new Layout(3,2,new int[2,3] {{1,1,1}, {1,1,0}}), Fragments);
 				if(Extra != "")
 				{
@@ -218,9 +218,9 @@ public class Store
 					NewElement.ExtraLayout = new Layout(3,2,new int[2,3] {{0,0,0}, {0,0,0}});
 					if(EI == 0) NewElement.ExtraLayout.Fields[0,0] = 1;
 					if(EI == 1) NewElement.ExtraLayout.Fields[0,1] = 1;
-					if(EI == 2) NewElement.ExtraLayout.Fields[1,0] = 1;
-					if(EI == 3) NewElement.ExtraLayout.Fields[1,1] = 1;
-					if(EI == 4) NewElement.ExtraLayout.Fields[0,2] = 1;
+					if(EI == 2) NewElement.ExtraLayout.Fields[0,2] = 1;
+					if(EI == 3) NewElement.ExtraLayout.Fields[1,0] = 1;
+					if(EI == 4) NewElement.ExtraLayout.Fields[1,1] = 1;
 				}
 				return NewElement;
 			}
@@ -375,7 +375,7 @@ public class Store
 				if(Extra != "")
 				{
 					NewElement.Extra = new Satelite(Extra, new Vector3(Fragments[EI].Offset.x, Element.Size, Fragments[EI].Offset.z));
-					NewElement.ExtraLayout = new Layout(3,3,new int[3,3] {{1,1,1},{1,0,0},{1,0,0}});
+					NewElement.ExtraLayout = new Layout(3,3,new int[3,3] {{0,0,0},{0,0,0},{0,0,0}});
 					if(EI == 0) NewElement.ExtraLayout.Fields[0,0] = 1;
 					if(EI == 1) NewElement.ExtraLayout.Fields[0,1] = 1;
 					if(EI == 2) NewElement.ExtraLayout.Fields[0,2] = 1;
@@ -389,8 +389,8 @@ public class Store
 				//  XX
 				// XX
 				// X
-				Fragments.Add(new Fragment(this.RandomArt(), new Vector3(0, 				0, 				0)));
-				Fragments.Add(new Fragment(this.RandomArt(), new Vector3(Element.Size,		0, 				0)));
+				Fragments.Add(new Fragment(this.RandomArt(), new Vector3(Element.Size, 		0, 				0)));
+				Fragments.Add(new Fragment(this.RandomArt(), new Vector3(2 * Element.Size,	0, 				0)));
 				Fragments.Add(new Fragment(this.RandomArt(), new Vector3(Element.Size,		0, 				Element.Size)));
 				Fragments.Add(new Fragment(this.RandomArt(), new Vector3(0, 				0, 				Element.Size)));
 				Fragments.Add(new Fragment(this.RandomArt(), new Vector3(0, 				0, 				2 * Element.Size)));
@@ -398,9 +398,9 @@ public class Store
 				if(Extra != "")
 				{
 					NewElement.Extra = new Satelite(Extra, new Vector3(Fragments[EI].Offset.x, Element.Size, Fragments[EI].Offset.z));
-					NewElement.ExtraLayout = new Layout(3,3,new int[3,3] {{1,1,1},{1,0,0},{1,0,0}});
-					if(EI == 0) NewElement.ExtraLayout.Fields[0,0] = 1;
-					if(EI == 1) NewElement.ExtraLayout.Fields[0,1] = 1;
+					NewElement.ExtraLayout = new Layout(3,3,new int[3,3] {{0,0,0},{0,0,0},{0,0,0}});
+					if(EI == 0) NewElement.ExtraLayout.Fields[0,1] = 1;
+					if(EI == 1) NewElement.ExtraLayout.Fields[0,2] = 1;
 					if(EI == 2) NewElement.ExtraLayout.Fields[1,1] = 1;
 					if(EI == 3) NewElement.ExtraLayout.Fields[1,0] = 1;
 					if(EI == 4) NewElement.ExtraLayout.Fields[2,0] = 1;

@@ -2,15 +2,40 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ResourcePool : MonoBehaviour {
-
-	// Use this for initialization
-	void Start () {
-		
+public class ResourcePool
+{
+	public static ResourcePool Single;
+	public List<bool> Done;
+	public List<int[]> Reqs;
+	public ResourcePool()
+	{
+		this.Done = new List<bool>();
+		for(int i = 0; i < 13; i++) this.Done.Add(false);
+		this.Reqs = new List<int[]>();
+		this.Reqs.Add(new int[1]{1});
+		this.Reqs.Add(new int[1]{0});
+		this.Reqs.Add(new int[1]{2});
+		this.Reqs.Add(new int[1]{0});
+		this.Reqs.Add(new int[2]{6,4});
+		this.Reqs.Add(new int[2]{3,6});
+		this.Reqs.Add(new int[2]{2,5});
+		this.Reqs.Add(new int[3]{9,7,8});
+		this.Reqs.Add(new int[3]{8,0,9});
+		ResourcePool.Single = this;
 	}
-	
-	// Update is called once per frame
-	void Update () {
-		
+	public void Do(int Index)
+	{
+		this.Done[Index] = true;
+		Debug.Log("Done"+Index);
+	}
+	public bool IsDone(int Index)
+	{
+		return this.Done[Index];
+	}
+	public int[] GetReqs(int Index)
+	{
+		if(Index < 3) return null;
+		Index -= 3;
+		return this.Reqs[Index];
 	}
 }

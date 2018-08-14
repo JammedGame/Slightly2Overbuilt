@@ -29,6 +29,7 @@ public class Building
 		Floor NewFloor = new Floor(0);
 		this._Floors.Add(NewFloor);
 		this._CurrentFloor = 0;
+		ResourcePool RP = new ResourcePool();
 	}
 	public bool CanBuild(Vector2 Location, Layout L2)
 	{
@@ -38,6 +39,7 @@ public class Building
 	}
 	public void Build(Vector2 Location, Element NewElement)
 	{
+		ResourcePool.Single.Do(NewElement.ResType);
 		if(this.OnMaxFloor()) this.AddFloor();
 		this._Floors[this._CurrentFloor].Elements.Add(NewElement);
 		this._Floors[this._CurrentFloor].Layout.Apply(Location, NewElement.Layout);

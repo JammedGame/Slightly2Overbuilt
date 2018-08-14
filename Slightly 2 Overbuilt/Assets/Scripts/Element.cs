@@ -145,5 +145,6 @@ public class Element
 	public void Rotate(int Direction)
 	{
 		this._Layout.Rotate(Direction);
+		this._ExtraLayout.Rotate(Direction);
 	}
 }
