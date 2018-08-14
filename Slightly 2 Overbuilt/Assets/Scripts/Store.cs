@@ -24,8 +24,8 @@ public class Store
 		this.AddNewElement(3, new Color32(0xE4, 0xBE, 0x5D, 0xFF)); // Wood
 		this.AddNewElement(3, new Color32(0xAE, 0xAC, 0x97, 0xFF), "satelite04"); // Metal
 		this.AddNewElement(3, new Color32(0x51, 0xE6, 0xAE, 0xFF)); // Glass
-		this.AddNewElement(4, new Color32(0x65, 0x64, 0x76, 0xFF), "satelite01"); // Rubber
-		this.AddNewElement(4, new Color32(0xFF, 0xF7, 0xFA, 0xFF)); // Plastic
+		this.AddNewElement(4, new Color32(0x8D, 0x68, 0xAA, 0xFF), "satelite01"); // Rubber
+		this.AddNewElement(4, new Color32(0xFF, 0xBE, 0xD2, 0xFF)); // Plastic
 		Element Electicity = this.AddNewElement(4, new Color32(0xFF, 0xFF, 0x85, 0xFF), "satelite02"); // Electicity
 		Electicity.Extra.Vertical = Element.Size * 1.6f;
 		this.AddNewElement(5, new Color32(0x4A, 0x93, 0x44, 0xFF), "satelite03"); // Electronics
@@ -36,7 +36,7 @@ public class Store
 		RocketFragments.Add(new Fragment("rocket", 		 new Vector3(0, 				0, 				Element.Size)));
 		RocketFragments.Add(new Fragment(this.RandomArt(), new Vector3(Element.Size, 		0, 				Element.Size)));
 		Element Rocket = new Element(0, new Layout(2,2,new int[2,2] {{1,1},{1,1}}), RocketFragments);
-		Rocket.Paint = new Color32(0xFF, 0xF7, 0xFA, 0xFF);
+		Rocket.Paint = new Color32(0xFE, 0x62, 0x65, 0xFF);
 		this._Elements.Add(Rocket);
 		for(int i = 0; i < 13; i++) this._Elements[i].ResType = i;
 	}

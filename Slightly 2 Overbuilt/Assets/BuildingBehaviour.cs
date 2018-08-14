@@ -18,10 +18,12 @@ public class BuildingBehaviour : MonoBehaviour
 	private Camera _Camera;
 	private Preview _Preview;
 	private int _LastFloor;
+	private Vector3 _FU;
 	void Start ()
 	{
 		GameObject Message = GameObject.Find("WinMessage"); 
-		Message.SetActive(false);
+		this._FU = Message.transform.position;
+		Message.transform.position = new Vector3(-6, -100, 0);
 		this._SelectedIndex = -1;
 		this._Grid = new Grid();
 		this._Building = new Building();
@@ -225,7 +227,7 @@ public class BuildingBehaviour : MonoBehaviour
 	public void WinGame()
 	{
 		GameObject Message = GameObject.Find("WinMessage"); 
-		Message.SetActive(true);
+		Message.transform.position = this._FU;
 	}
 	public void FinishGame()
 	{
