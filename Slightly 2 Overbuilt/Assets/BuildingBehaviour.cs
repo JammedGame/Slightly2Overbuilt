@@ -62,6 +62,18 @@ public class BuildingBehaviour : MonoBehaviour
 			}
 		}
 	}
+	public void FloorUp()
+	{
+		this._Building.GoUp();
+		this.RepositionCamera();
+		this.ChangeSelectedBuilding(this._SelectedIndex);
+	}
+	public void FloorDown()
+	{
+		this._Building.GoDown();
+		this.RepositionCamera();
+		this.ChangeSelectedBuilding(this._SelectedIndex);
+	}
 	private void CheckBuildingSelected()
 	{
 		if (Input.GetKeyDown(KeyCode.A) && this._SelectedIndex != -1)
@@ -76,15 +88,11 @@ public class BuildingBehaviour : MonoBehaviour
 		}
 		if (Input.GetKeyDown(KeyCode.W))
 		{
-			this._Building.GoUp();
-			this.RepositionCamera();
-			this.ChangeSelectedBuilding(this._SelectedIndex);
+			this.FloorUp();
 		}
 		else if (Input.GetKeyDown(KeyCode.S))
 		{
-			this._Building.GoDown();
-			this.RepositionCamera();
-			this.ChangeSelectedBuilding(this._SelectedIndex);
+			this.FloorDown();
 		}
 		if (Input.GetKeyDown(KeyCode.Alpha1) && this._SelectedIndex != 0)
 		{
