@@ -89,21 +89,21 @@ public class BuildingBehaviour : MonoBehaviour
 	}
 	private void CheckBuildingSelected()
 	{
-		if (Input.GetKeyDown(KeyCode.A) && this._SelectedIndex != -1)
+		if ((Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow)) && this._SelectedIndex != -1)
 		{
 			this._Construct.Rotate(-1);
 			this._Construct.ConstructAvailable = this._Building.CanBuild(Grid.CursorLocation, this._Construct.Layout);
 		}
-		else if ((Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.Mouse1)) && this._SelectedIndex != -1)
+		else if ((Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.Mouse1) || Input.GetKeyDown(KeyCode.RightArrow)) && this._SelectedIndex != -1)
 		{
 			this._Construct.Rotate(1);
 			this._Construct.ConstructAvailable = this._Building.CanBuild(Grid.CursorLocation, this._Construct.Layout);
 		}
-		if (Input.GetKeyDown(KeyCode.W))
+		if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
 		{
 			this.FloorUp();
 		}
-		else if (Input.GetKeyDown(KeyCode.S))
+		else if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))
 		{
 			this.FloorDown();
 		}
@@ -167,6 +167,10 @@ public class BuildingBehaviour : MonoBehaviour
 		else if (Input.GetKeyDown(KeyCode.C))
 		{
 			this.RotateCamera(-1);
+		}
+		if (Input.GetKeyDown(KeyCode.Escape))
+		{
+			Application.Quit();
 		}
 	}
 	public void ChangeSelectedBuilding(int Index)
