@@ -22,8 +22,11 @@ public class BuildingBehaviour : MonoBehaviour
 	void Start ()
 	{
 		GameObject Message = GameObject.Find("WinMessage"); 
-		this._FU = Message.transform.position;
-		Message.transform.position = new Vector3(-6, -100, 0);
+		if(Message != null)
+		{
+			this._FU = Message.transform.position;
+			Message.transform.position = new Vector3(-6, -100, 0);
+		}
 		this._SelectedIndex = -1;
 		this._Grid = new Grid();
 		this._Building = new Building();
