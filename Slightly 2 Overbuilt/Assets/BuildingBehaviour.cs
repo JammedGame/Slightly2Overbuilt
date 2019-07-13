@@ -163,6 +163,10 @@ public class BuildingBehaviour : MonoBehaviour
 				}
 			}
 		}
+        if (Input.GetKeyDown(KeyCode.U))
+        {
+            this._Building.Undo();
+        }
 		if (Input.GetKeyDown(KeyCode.Z))
 		{
 			this.RotateCamera(1);
@@ -249,6 +253,9 @@ public class BuildingBehaviour : MonoBehaviour
 	private void UpdateFloorIndicator()
 	{
 		GameObject FI = GameObject.Find("FloorIndicator"); 
-		FI.GetComponent<Text>().text = (this._Building.CurrentFloor + 1) + "";
+        if(FI!=null)
+        {
+            FI.GetComponent<Text>().text = (this._Building.CurrentFloor + 1) + "";
+        }
 	}
 }

@@ -19,6 +19,7 @@ public class Element
 	private Layout _Layout;
 	private Layout _ExtraLayout;
 	private Vector2 _Location;
+    private Vector2 _LayoutLocation;
 	private Color _Paint;
 	private Satelite _Extra;
 	private List<Fragment> _Fragments;
@@ -81,7 +82,12 @@ public class Element
 		get { return this._Location; }
 		set { this._Location = value; }
 	}
-	public Color Paint
+    public Vector2 LayoutLocation
+    {
+        get { return this._LayoutLocation; }
+        set { this._LayoutLocation = value; }
+    }
+    public Color Paint
 	{
 		get { return this._Paint; }
 		set { this._Paint = value; }

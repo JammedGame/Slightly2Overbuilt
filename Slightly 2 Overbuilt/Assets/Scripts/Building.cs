@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Building
 {
+	static List<Element> ALL_ELEMENTS;
 	private int _CurrentFloor;
 	private Store _Pool;
 	private List<Floor> _Floors;
@@ -42,6 +43,7 @@ public class Building
 		ResourcePool.Single.Do(NewElement.ResType);
 		ResourcePool.Single.UndoReqs(NewElement.ResType);
 		if(this.OnMaxFloor()) this.AddFloor();
+        NewElement.LayoutLocation = Location;
 		this._Floors[this._CurrentFloor].Elements.Add(NewElement);
 		this._Floors[this._CurrentFloor].Layout.Apply(Location, NewElement.Layout);
 		if(NewElement.ExtraLayout != null)
@@ -49,7 +51,24 @@ public class Building
 			this._Floors[this._CurrentFloor].Layout.ApplySatelite(Location, NewElement.ExtraLayout);
 			this._Floors[this._CurrentFloor].Layout.Print();
 		}
+		if(ALL_ELEMENTS == null) {
+			ALL_ELEMENTS = new List<Element>();
+		}
+		ALL_ELEMENTS.Add(NewElement);
 	}
+
+	public void RemoveElement(Element Element){
+        Element ToDelete = Element;
+        this._Floors[ToDelete.Floor].Layout.DeApply(ToDelete.LayoutLocation, ToDelete.Layout);
+        if (ToDelete.ExtraLayout != null)
+        {
+            this._Floors[ToDelete.Floor].Layout.DeApply(ToDelete.LayoutLocation, ToDelete.ExtraLayout);
+        }
+        ResourcePool.Single.Undo(Element.ResType);
+        ResourcePool.Single.ProperUndo(Element.ResType);
+        ToDelete.Destroy();
+        ALL_ELEMENTS.RemoveAt(ALL_ELEMENTS.Count - 1);
+    }
 	public bool IsGoUpPossible()
 	{
 		return this._Floors[this._CurrentFloor].Elements.Count > 0;
@@ -71,5 +90,13 @@ public class Building
 	{
 		Floor NewFloor = new Floor(this._Floors.Count);
 		this._Floors.Add(NewFloor);
+	}
+
+	public void Undo() 
+	{
+        if(ALL_ELEMENTS.Count > 0)
+        {
+            this.RemoveElement(ALL_ELEMENTS[ALL_ELEMENTS.Count - 1]);
+        }
 	}
 }

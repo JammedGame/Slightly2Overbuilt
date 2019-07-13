@@ -62,4 +62,16 @@ public class ResourcePool
 			this.Undo(Reqs[i]);
 		}
 	}
+    public void ProperUndo(int Index)
+    {
+        this.Undo(Index);
+        int[] Reqs = this.GetReqs(Index);
+        if(Reqs != null)
+        {
+            for (int i = 0; i < Reqs.Length; i++)
+            {
+                this.Do(Reqs[i]);
+            }
+        }
+    }
 }

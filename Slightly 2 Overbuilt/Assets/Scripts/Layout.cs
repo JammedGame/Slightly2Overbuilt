@@ -92,7 +92,20 @@ public class Layout
 			}
 		}
     }
-	public void ApplySatelite(Vector2 Location, Layout L2)
+    public void DeApply(Vector2 Location, Layout L2)
+    {
+        for (int i = 0; i < L2._Size.y; i++)
+        {
+            for (int j = 0; j < L2._Size.x; j++)
+            {
+                if (L2._Fields[i, j] != 0)
+                {
+                    this._Fields[(int)Location.y + i, (int)Location.x + j] = 0;
+                }
+            }
+        }
+    }
+    public void ApplySatelite(Vector2 Location, Layout L2)
     {
 		for(int i = 0; i < L2._Size.y; i++)
 		{
